@@ -1,0 +1,53 @@
+#canvas {
+    position: absolute;
+    z-index: 2;
+    top: 0px;
+   
+    /*opacity: .4;*/
+  margin:0px;
+  overflow: hidden;
+background: rgb(255,255,255);
+
+
+
+
+}
+
+
+
+/*lines*/
+
+
+.l1,.l2,.l3{
+  position:absolute;
+  width:50px;
+  height:1px;
+  z-index: 9999;
+  background:#aecbdf;
+  transform:rotate(-55deg);
+}
+.l1{
+  margin:-30px 400px;
+  animation:go .9s linear infinite;
+}
+.l2{
+  margin:70px 600px;
+  animation:go3 1s linear infinite;
+}
+.l3{
+  margin:132px 300px;
+  animation:go7 2s linear infinite;
+}
+
+@keyframes go{
+  0%{transform:rotate(-30deg) translateX(-30px)}
+  100%{transform:rotate(-30deg) translateX(-500px)}
+}
+@keyframes go3{
+  0%{transform:rotate(-30deg) translateX(0px)}
+  100%{transform:rotate(-30deg) translateX(-700px)}
+}
+@keyframes go7{
+  0%{transform:rotate(-30deg) translateX(30px)}
+  100%{transform:rotate(-30deg) translateX(-700px)}
+}

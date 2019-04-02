@@ -1,7 +1,852 @@
 <!DOCTYPE html>
-<html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/fav.png" />
+    <title>Hello,</title>
+    <meta name="description" content="Always up for something new ">
+    <meta name="keywords" content="lukman nakib,HTML,CSS,XML,JavaScript, freelance">
+    <meta name="author" content="Lukman Nakib">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/owl.carousel.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->s
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/draw.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="fonts/website-font/stylesheet.css" rel="stylesheet" type="text/css" />
+
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="js/owl.carousel.min.js" type="text/javascript"></script>
+    <script src="js/wow.min.js" type="text/javascript"></script>
+    <script src="js/jquery.inview.min.js" type="text/javascript"></script>
+    <script src="js/mousescroll.js" type="text/javascript"></script>
+    <script src="js/shuffle.min.js" type="text/javascript"></script>
+    <script src="js/shuffle.custom.js" type="text/javascript"></script>
+    <script src="js/common.js" type="text/javascript"></script>
+    <script src="js/draw.js" type="text/javascript"></script>
+    <script src="js/textition.js" type="text/javascript"></script>
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" style="float:none;" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" style="padding:0px;" href="#myPage"><img src="images/nkb.svg" width="65"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a data-hover="Home" href="#myPage">Home</a></li>
+                    <li><a data-hover="About&nbsp;Me" href="#about">About Me</a></li>
+                    <li><a data-hover="Experience" href="#experience">Experience</a></li>
+                    <li><a data-hover="Portfolio" href="#portfolio">Portfolio</a></li>
+                    <li><a data-hover="Blog" href="#blog">Blog</a></li>
+                    <li><a data-hover="Contact" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+ 
+    <div class="tv-banner">
+        <div class="container-fluid">
+            <canvas id="canvas" class="col-md-12"></canvas>
+            <div class="row">
+
+                <div class="tv-banner-content">
+                    <h4 class="tv-hi-text">Hi,I am</h4>
+                    <h1 class="tv-person-name">
+                            <span class="tv-bgclr-orange">Lukman</span>
+                            Nakib
+                        </h1>
+                    <div class="tv-profession" id="autoplay">
+                        <p class="tv-hi-text">Backend web developer</p>
+                        <p class="tv-hi-text">Codeingiter Expert</p>
+                        <p class="tv-hi-text">Skilled in Jquery & Ajax</p>
+                        <p class="tv-hi-text">Expert In MySql DB Mangement</p>
+                    </div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section id="about" class="about-me tv-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="tv-section-header-content">
+                        <header class="tv-section-header">
+                            <div class="tv-section-heading">
+                                <div class="tv-section-titleicon"><i class="fa fa-user"></i></div>
+                                <h2 class="tv-section-title">Introduction</h2>
+                            </div>
+                        </header>
+                    </div>
+                    <div class="tv-profile-pic">
+                        <figure>
+                            <!-- <img alt="user-image" src="images/profile-pic2.jpg" class="img-circle"> -->
+                            <img alt="user-image" src="images/nakib.jpg" width="140px" class="img-circle">
+                        </figure>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="tv-user-info-details">
+                        <p>A simple person who loves to code and developing and also traveling with music. I am a codeigniter lover. Currnetly working as professional developer for a uk team and also available for freelance project. </p>
+                    </div>
+                    <div class="tv-skill-content">
+                        <div class="tv-skill-title">
+                            <h4>Acquired <span class="tv-bgclr-orange">Skill</span></h4>
+                        </div>
+                        <div class="tv-skill-bar">
+                            <div class="row">
+                                <div id="tv-skill-list" class="parallax">
+                                    <div class="col-xs-12">
+                                        <div class="tv-skill-type tv-m-t30">
+                                            <h5>Professional</h5>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class=" wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                        <div class="col-md-4">
+                                            <div class="tv-single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                                <p>PHP</p>
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar" aria-valuetransitiongoal="88"><span>88%</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="tv-single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                                <p>Codeigniter</p>
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar" aria-valuetransitiongoal="101"><span>101%</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="tv-single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                                <p>Laravel</p>
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar" aria-valuetransitiongoal="70"><span>70%</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="tv-skill-list" class="parallax">
+                                    <div class="col-xs-12">
+                                        <div class="tv-skill-type tv-m-t30">
+                                            <h5>Personal</h5>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class=" wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                        <div class="col-md-4">
+                                            <div class="tv-single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                                <p>Communication</p>
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar" aria-valuetransitiongoal="85"><span>85%</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="tv-single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                                <p>Quality</p>
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar" aria-valuetransitiongoal="95"><span>95%</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="tv-single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                                <p>Dedication</p>
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar" aria-valuetransitiongoal="99"><span>99%</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="experience" class="work-experience tv-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="tv-section-header-content">
+                        <header class="tv-section-header">
+                            <div class="tv-section-heading">
+                                <div class="tv-section-titleicon"><i class="fa fa-suitcase"></i></div>
+                                <h2 class="tv-section-title">Experience</h2>
+                            </div>
+                        </header>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="tv-timeline-content">
+                        <ul class="tv-timeline">
+                            <li>
+                                <div class="tv-timeline-time">
+                                    <h6>1 years</h6>
+                                    <p>2017-2018</p>
+                                </div>
+                                <div class="tv-timeline-body">
+                                    <div class="tv-timeline-title">
+                                        <h5>Web Developer & Manager</h5>
+                                    </div>
+                                    <div class="tv-timeline-details">
+                                        <p> Start and maintain online web projects from start to finish.Database maintanance </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tv-timeline-time">
+                                    <h6>2 years</h6>
+                                    <p>2016-2017</p>
+                                </div>
+                                <div class="tv-timeline-body">
+                                    <div class="tv-timeline-title">
+                                        <h5>Back-end developer</h5>who
+                                    </div>
+                                    <div class="tv-timeline-details">
+                                        <p>
+                                            Work with a team using PHP, Mysql, Ajax, Jquery, Html ,Css, SASS.
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <!--   <li>
+                                    <div class="tv-timeline-time">
+                                        <h6>2 years</h6>
+                                        <p>2008-2010</p>
+                                    </div>
+                                    <div class="tv-timeline-body">
+                                        <div class="tv-timeline-title">
+                                            <h5>Product Manager</h5>
+                                        </div>
+                                        <div class="tv-timeline-details">
+                                            <p> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo </p>
+                                        </div>
+                                    </div>
+                                </li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="education" class="education tv-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="tv-section-header-content">
+                        <header class="tv-section-header">
+                            <div class="tv-section-heading">
+                                <div class="tv-section-titleicon"><i class="fa fa-graduation-cap"></i></div>
+                                <h2 class="tv-section-title">Education</h2>
+                            </div>
+                        </header>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="tv-timeline-content">
+                        <ul class="tv-timeline">
+                            <li>
+                                <div class="tv-timeline-time">
+                                    <h6>4 years</h6>
+                                    <p>2012-2016</p>
+                                </div>
+                                <div class="tv-timeline-body">
+                                    <div class="tv-timeline-title">
+                                        <h5>Metropolitan University</h5>
+                                    </div>
+                                    <div class="tv-timeline-details">
+                                        <p> Bachelor of Science in Computer Science & Engineering</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tv-timeline-time">
+                                    <h6>1 years</h6>
+                                    <p>2016-2017</p>
+                                </div>
+                                <div class="tv-timeline-body">
+                                    <div class="tv-timeline-title">
+                                        <h5>Cisco Certified Network Associate</h5>
+                                    </div>
+                                    <div class="tv-timeline-details">
+                                        <p> Completed CCNA course for network setup and maintenance </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <!--    <li>
+                                    <div class="tv-timeline-time">
+                                        <h6>2 years</h6>
+                                        <p>2010-2011</p>
+                                    </div>
+                                    <div class="tv-timeline-body">
+                                        <div class="tv-timeline-title">
+                                            <h5>Secondary School Certificate</h5>
+                                        </div>
+                                        <div class="tv-timeline-details">
+                                            <p> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo </p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="tv-timeline-time">
+                                        <h6>2 years</h6>
+                                        <p>2008-2010</p>
+                                    </div>
+                                    <div class="tv-timeline-body">
+                                        <div class="tv-timeline-title">
+                                            <h5>Lorem Ipsum School</h5>
+                                        </div>
+                                        <div class="tv-timeline-details">
+                                            <p> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo </p>
+                                        </div>
+                                    </div>
+                                </li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="portfolio" class="portfolio tv-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="tv-section-header-content">
+                        <header class="tv-section-header">
+                            <div class="tv-section-heading">
+                                <div class="tv-section-titleicon"><i class="fa fa-list"></i></div>
+                                <h2 class="tv-section-title">Some of my Projects</h2>
+                            </div>
+                        </header>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="tv-filter-wrapper col-xs-12 tv-mb-50">
+                            <div class="tv-portfolio-filter tv-filter-options">
+                                <a class="active" data-hover="All" data-group="all">All</a>
+                                <a data-hover="Developement" data-group="development">Developement</a>
+                                <a data-hover="Admin Dashboard" data-group="admin-dashboard">Admin Dashboard</a>
+                                <a data-hover="Illustration" data-group="illustration">Design</a>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <ul id="grid" class="tv-portfolio-grid">
+                            <li class="item grid-item col-md-4 col-sm-6 col-xs-6 tv-padding0 width-100" data-groups='["development"]'>
+                                <div class="tv-portfolio-content">
+                                    <div class="tv-portfolio-item-content">
+                                        <img alt="portfolio-item" src="images/1.jpg" class="img-responsive">
+                                        <div class="tv-portfolio-item-hover">
+                                            <div class="tv-portfolio-item-hover-content">
+                                                <div class="tv-hover-text">
+                                                    <a href="http://theb2bgroup.uk.com/" target="_blank">The B2b</a>
+                                                    <p>A Mobile company web with admin panel system</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item grid-item col-md-4 col-sm-6 col-xs-6 tv-padding0 width-100" data-groups='["admin-dashboard"]'>
+                                <div class="tv-portfolio-content">
+                                    <div class="tv-portfolio-item-content">
+                                        <img alt="portfolio-item" src="images/photo.jpg" class="img-responsive">
+                                        <div class="tv-portfolio-item-hover">
+                                            <div class="tv-portfolio-item-hover-content">
+                                                <div class="tv-hover-text">
+                                                    <a href="http://mdakhlasuddin.com" target="_blank">Photographer Portfolio Site</a>
+                                                    <p>Custom Back-end Admin Dashboard</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item grid-item col-md-4 col-sm-6 col-xs-6 tv-padding0 width-100" data-groups='["development"]'>
+                                <div class="tv-portfolio-content">
+                                    <div class="tv-portfolio-item-content">
+                                        <img alt="portfolio-item" src="images/color-img3.jpg" class="img-responsive">
+                                        <div class="tv-portfolio-item-hover">
+                                            <div class="tv-portfolio-item-hover-content">
+                                                <div class="tv-hover-text">
+                                                    <a href="https://naijasamplepoll.000webhostapp.com/" target="_blank">Online Live Poll</a>
+                                                    <p>OOp Php , Mysql & Ajax</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item grid-item col-md-4 col-sm-6 col-xs-6 tv-padding0 width-100" data-groups='["illustration"]'>
+                                <div class="tv-portfolio-content">
+                                    <div class="tv-portfolio-item-content">
+                                        <img alt="portfolio-item" src="images/imminent.jpg" class="img-responsive">
+                                        <div class="tv-portfolio-item-hover">
+                                            <div class="tv-portfolio-item-hover-content">
+                                                <div class="tv-hover-text">
+                                                    <a href="http://imminentsolutions.co.uk" target="_blank">Company Website</a>
+                                                    <p>Html,Css and Img compression</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item grid-item col-md-4 col-sm-6 col-xs-6 tv-padding0 width-100" data-groups='["development"]'>
+                                <div class="tv-portfolio-content">
+                                    <div class="tv-portfolio-item-content">
+                                        <img alt="portfolio-item" src="images/doc.jpg" class="img-responsive">
+                                        <div class="tv-portfolio-item-hover">
+                                            <div class="tv-portfolio-item-hover-content">
+                                                <div class="tv-hover-text">
+                                                    <a href="doctorguidebd.org" target="_blank">Doctor Appointment Booking(on test)</a>
+                                                    <p>Full Development</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="item grid-item col-md-4 col-sm-6 col-xs-6 tv-padding0 width-100" data-groups='["illustration"]'>
+                                <div class="tv-portfolio-content">
+                                    <div class="tv-portfolio-item-content">
+                                        <img alt="portfolio-item" src="images/color-img6.jpg" class="img-responsive">
+                                        <div class="tv-portfolio-item-hover">
+                                            <div class="tv-portfolio-item-hover-content">
+                                                <div class="tv-hover-text">
+                                                    <a target="_blank" href="https://lukman-nakib.000webhostapp.com/ci-ready-player-one/login"> Admin panel  + Dynamic Landing page</a>
+                                                    <p>User : demo123
+                                                        <br> Password : demo123 </p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="clients" class="clients tv-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="tv-section-header-content">
+                        <header class="tv-section-header">
+                            <div class="tv-section-heading">
+                                <div class="tv-section-titleicon"><i class="fa fa-users"></i></div>
+                                <h2 class="tv-section-title">Clients</h2>
+                            </div>
+                        </header>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="row tv-testimonial-content">
+                        <div class="owl-carousel owl-loaded owl-drag">
+                            <article class="tv-slider-item">
+                                <div class="tv-client-content">
+                                    <div class="col-md-2 col-sm-3 col-xs-12">
+                                        <div class="tv-client-image">
+                                            <!-- <img src="images/client1.jpg" alt="client" class="img-circle"> -->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <div class="tv-client-says">
+                                            <h4>Mr. Rick</h4>
+                                            <p>“Awesome service, seller takes the time to fully understand my requirements and manage to deliver what i want, Talented man. Would definitely come back to him for more of his services..”</p>
+                                            <div class="tv-client-info"> Owner of DBMS Holiday</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="tv-slider-item">
+                                <div class="tv-client-content">
+                                    <div class="col-md-2 col-sm-3 col-xs-12">
+                                        <div class="tv-client-image">
+                                            <!-- <img src="images/client2.jpg" alt="client" class="img-circle"> -->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <div class="tv-client-says">
+                                            <h4>Sesan Ajina</h4>
+                                            <p>“Amazing guy. You should work with him, best attention to detail.”</p>
+                                            <div class="tv-client-info"> Owner <a href="http://insights.vision" target="_blank">Insights Vision</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <!--<div class="row tv-partner-content tv-m-t30">-->
+                    <!--    <div class="col-md-3 col-sm-3 col-xs-3 width-50 text-center">-->
+                    <!--        <div class="tv-brand-img">-->
+                    <!--            <img src="images/client1.png" alt="client">-->
+                    <!--        </div>-->
+                    <!--    </div>-->
+                    <!--    <div class="col-md-3 col-sm-3 col-xs-3 width-50 text-center">-->
+                    <!--        <div class="tv-brand-img">-->
+                    <!--            <img src="images/client2.png" alt="client">-->
+                    <!--        </div>-->
+                    <!--    </div>-->
+                    <!--    <div class="col-md-3 col-sm-3 col-xs-3 width-50 text-center">-->
+                    <!--        <div class="tv-brand-img">-->
+                    <!--            <img src="images/client3.png" alt="client">-->
+                    <!--        </div>-->
+                    <!--    </div>-->
+                    <!--    <div class="col-md-3 col-sm-3 col-xs-3 width-50 text-center">-->
+                    <!--        <div class="tv-brand-img">-->
+                    <!--            <img src="images/client4.png" alt="client">-->
+                    <!--        </div>-->
+                    <!--    </div>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--    <section id="blog" class="blog tv-section">
+            <div class="container">  
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="tv-section-header-content">
+                            <header class="tv-section-header">
+                                <div class="tv-section-heading">
+                                    <div class="tv-section-titleicon"><i class="fa fa-bold"></i></div>
+                                    <h2 class="tv-section-title">Articles</h2>
+                                </div>
+                            </header>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="tv-blog-content">
+                            <div class="row tv-blog-masonry">
+                                <div class="col-md-6 col-sm-6 col-xs-12 tv-blog-list">
+                                    <div class="tv-blog-box">
+                                        <div class="tv-blog-img">
+                                            <img src="images/blog1.jpg" alt="blog" class="img-responsive">
+                                        </div>
+                                        <div class="tv-blog-details">
+                                            <div class="tv-blog-title">
+                                                <a href="">
+                                                    <h4>Website Design</h4>
+                                                    <span>branding, ui-ux, article</span>
+                                                </a>
+                                            </div>
+                                            <div class="tv-blog-desc">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ante urna, maximus sed purus at, rhoncus mollis arcu. Morbi in lacus in nibh pulvinar bibendum sit amet id libero. Duis arcu mi, vestibulum at libero nec, scelerisque ullamcorper risus. Donec eu nunc diam.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12 tv-blog-list">
+                                    <div class="tv-blog-box">
+                                        <div class="tv-blog-img">
+                                            <img src="images/blog2.jpg" alt="blog" class="img-responsive">
+                                        </div>
+                                        <div class="tv-blog-details">
+                                            <div class="tv-blog-title">
+                                                <a href="">
+                                                    <h4>Website Design</h4>
+                                                    <span>branding, ui-ux, article</span>
+                                                </a>
+                                            </div>
+                                            <div class="tv-blog-desc">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ante urna, maximus sed purus at</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12 tv-blog-list">
+                                    <div class="tv-blog-box">
+                                        <div class="tv-blog-img">
+                                            <img src="images/blog3.jpg" alt="blog" class="img-responsive">
+                                        </div>
+                                        <div class="tv-blog-details">
+                                            <div class="tv-blog-title">
+                                                <a href="">
+                                                    <h4>Website Design</h4>
+                                                    <span>branding, ui-ux, article</span>
+                                                </a>
+                                            </div>
+                                            <div class="tv-blog-desc">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ante urna, maximus sed purus at, rhoncus mollis arcu. Morbi in lacus in nibh pulvinar bibendum sit amet id libero. Duis arcu mi, vestibulum at libero nec, scelerisque ullamcorper risus. Donec eu nunc diam.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12 tv-blog-list">
+                                    <div class="tv-blog-box">
+                                        <div class="tv-blog-img">
+                                            <img src="images/blog4.jpg" alt="blog" class="img-responsive">
+                                        </div>
+                                        <div class="tv-blog-details">
+                                            <div class="tv-blog-title">
+                                                <a href="">
+                                                    <h4>Website Design</h4>
+                                                    <span>branding, ui-ux, article</span>
+                                                </a>
+                                            </div>
+                                            <div class="tv-blog-desc">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pellentesque tortor pellentesque purus rhoncus ut susci.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+    <section id="contact" class="contact tv-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="tv-section-header-content">
+                        <header class="tv-section-header">
+                            <div class="tv-section-heading">
+                                <div class="tv-section-titleicon"><i class="fa fa-mobile"></i></div>
+                                <h2 class="tv-section-title">Contact</h2>
+                            </div>
+                        </header>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="tv-contact-content">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="tv-contact-box">
+                                    <ul>
+                                        <li>
+                                            <div class="tv-contact-icon">
+                                                <i class="fa fa-location-arrow"></i>
+                                            </div>
+                                            <div class="tv-contact-info">
+                                                <div class="tv-contact-info-title">
+                                                    <h5>Address</h5>
+                                                </div>
+                                                <div class="tv-contact-info-body">
+                                                    Somewhere in Earth
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="tv-contact-icon">
+                                                <i class="fa fa-envelope"></i>
+                                            </div>
+                                            <div class="tv-contact-info">
+                                                <div class="tv-contact-info-title">
+                                                    <h5>Email</h5>
+                                                </div>
+                                                <div class="tv-contact-info-body">
+                                                    <a href="mailto:demo@info.com">lukman.nakib@gmail.com</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="tv-contact-icon">
+                                                <i class="fa fa-phone"></i>
+                                            </div>
+                                            <div class="tv-contact-info">
+                                                <div class="tv-contact-info-title">
+                                                    <h5>Phone</h5>
+                                                </div>
+                                                <div class="tv-contact-info-body">
+                                                    <a href="tel:1-202-555-0100">+88 01715928113</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a class="btn" href="/img/lukman-nakib.pdf" download>
+                                                <!-- <button > -->
+                                                <span class="tv-mask"></span>
+                                                <span>Download CV</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                               <?php  include 'social-share.php';?>
+                                        </li> 
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="tv-contact-form">
+                                    <form action="" method="post">
+                                        <div class="form-group md-form">
+                                            <input id="text" class="cmn-field" name="name"  placeholder="Name" type="text">
+                                        </div>
+                                        <div class="form-group md-form">
+                                            <input id="email" class="cmn-field" name="email"  placeholder="Email" type="email">
+                                        </div>
+                                        <div class="form-group md-form">
+                                            <textarea id="msg" class="messge-field"  name="msg" placeholder="Message" name="#"></textarea>
+                                        </div>
+                                        <button class="btn" disabled >
+                                            <span class="tv-mask"></span>
+                                            <span>Submit</span>
+                                        </button>
+                                    </form>
+                                    <div class="tv-freelance-content tv-m-t30">
+                                        <span class="tv-blink-dot"></span>
+                                        <span class="tv-freelance-tag">Available for Freelance Projects.</span>
+                                    </div>
+                                </div>
+                                
+                                <?php 
+                               
+                                     
+                                    //   if (isset($_POST["name"])) {
+                                          
+                                    //       print_r($_POST);
+                                    //     $to_email = $_POST["to_email"];
+                                    //     $from_email = $_POST["from_email"];
+                                    //     $subject = $_POST["subject"];
+                                    //     $body = $_POST["message"];
+                                     
+                                    //     if ( mail($to_email, $subject, $body, $headers)) {
+                                    //       echo("Email successfully sent to $to_email...");
+                                    //     } else {
+                                    //       echo("Email sending failed...");
+                                    //     }
+                                    //   }
+                                    
+                                    ?>
+                            </div>
+                            <div class="col-md-4">
+                               <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+                                  <div class="LI-profile-badge"  data-version="v1" data-size="large" data-locale="en_US" data-type="horizontal" data-theme="light" data-vanity="lukman-nakib"><a class="LI-simple-link" target="_blank" href='https://bd.linkedin.com/in/lukman-nakib?trk=profile-badge'>Lukman Hossain Nakib</a></div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                         
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="tv-section">
+        <div class="tv-footer-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-sm-8">
+                        <div class="tv-copyright">
+                            ©
+                            <?php echo date('Y'); ?> All right reserved. Designed by
+                                <a href="#" target=""><strong>me</strong></a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <ul class="tv-social-links">
+                            <li>
+                                <a href="https://twitter.com/mr_mihi" target="_blank">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="www.facebook.com/nakib.me" target="_blank">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/mr_mihi" target="_blank">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/in/lukman-nakib" target="_blank">
+                                    <i class="fa fa-linkedin-square"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <style>
+        #myPage > div:nth-child(40) > a > img {
+            display: none;
+        }
+    </style>
+    <script src="js/jquery.imagesloaded.js" type="text/javascript"></script>
+    <script src="js/masonry.pkgd.min.js" type="text/javascript"></script>
+    <script>
+        /*
+                    $(document).ready(function() {
+                        $("img").on("contextmenu",function(){
+                           return false;
+                        }); 
+                            $(document)[0].oncontextmenu = function() { return false; }
+
+                            $(document).mousedown(function(e) {
+                                if( e.button == 2 ) {
+                                    // alert('Sorry, this functionality is disabled!');
+                                    return false;
+                                } else {
+                                    return true;
+                                }
+                            });
+                    });
+                    */
+        // hidding 000webhost logo
+        $('#myPage > div:nth-child(31)').css("opacity", "0");
+        $blog = $('.tv-blog-masonry');
+        $blog.imagesLoaded(function() {
+            $('.tv-blog-masonry').masonry({
+                // options
+                itemSelector: '.tv-blog-list',
+
+                percentPosition: true
+            });
+        });
+    </script>
+    <script>
+        $('.tv-testimonial-content .owl-carousel').owlCarousel({
+            slideSpeed: 300,
+            paginationSpeed: 400,
+            transitionStyle: "fade",
+            loop: true,
+            items: 1,
+            margin: 0,
+            nav: false,
+            dots: true,
+            autoplay: true,
+            autoplayHoverPause: false,
+            autoplaySpeed: 2000,
+            navSpeed: 1000,
+            singleItem: true
+        });
+    </script>
+
 </body>
+
 </html>
