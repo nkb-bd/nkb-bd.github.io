@@ -398,10 +398,13 @@ p{
     width: calc(100% - 60px);
 }
 .tv-portfolio-item-content{
-    display: table;
+        display: table;
     height: 100%;
     text-align: center;
     width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid #cdcd;
 }
 .tv-portfolio-item-content img {
     width: 100%;
