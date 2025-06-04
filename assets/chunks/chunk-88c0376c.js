@@ -1,0 +1,1 @@
+/* empty css              */import{_ as n,o,c as s,r as t}from"./chunk-192dc339.js";const c={},r={class:"code-inline"};function a(e,d){return o(),s("span",r,[t(e.$slots,"default",{},void 0,!0)])}const l=n(c,[["render",a],["__scopeId","data-v-bd423566"]]);export{l as I};
