@@ -18,7 +18,7 @@ const isActive = (href: string) => path === href || path.startsWith(href + '/');
       {links.map((l) => (
         <a href={l.href} class:list={['nav-link', { active: isActive(l.href) }]}>{l.label}</a>
       ))}
-      <a class="nav-link resume" href="https://www.linkedin.com/in/lukmannakib" target="_blank" rel="noopener">résumé</a>
+      <a class="nav-link resume" href="https://www.linkedin.com/in/lukmannakib" target="_blank" rel="noopener">Resume</a>
     </nav>
     <div class="theme-menu">
       <button id="theme-btn" class="theme-btn" type="button" aria-haspopup="menu" aria-expanded="false" aria-label="Choose theme">
