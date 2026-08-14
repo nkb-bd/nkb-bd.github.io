@@ -1,0 +1,171 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Subscribe from '../components/Subscribe.astro';
+import Mascot from '../components/Mascot.astro';
+
+const byDate = (a, b) => b.data.date.valueOf() - a.data.date.valueOf();
+const work = (await getCollection('work', ({ data }) => !data.draft)).sort(byDate).slice(0, 4);
+const writing = (await getCollection('writing', ({ data }) => !data.draft)).sort(byDate).slice(0, 3);
+const projects = (await getCollection('projects', ({ data }) => !data.draft)).sort(byDate);
+const yr = (d: Date) => d.getFullYear();
+
+const social = [
+  { href: 'https://github.com/nkb-bd', label: 'github' },
+  { href: 'https://x.com/lukmannakib', label: 'x' },
+  { href: 'https://www.linkedin.com/in/lukmannakib', label: 'linkedin' },
+  { href: 'mailto:nakib.un@gmail.com', label: 'email' },
+];
+
+// Edit to match your real toolkit.
+const stack = [
+  { group: 'Languages', items: ['PHP', 'JavaScript', 'TypeScript', 'SQL'] },
+  { group: 'Backend', items: ['WordPress', 'WPFluent', 'REST APIs', 'MySQL'] },
+  { group: 'Frontend', items: ['Vue', 'Vite', 'Alpine', 'Tailwind'] },
+  { group: 'Testing & tooling', items: ['PHPUnit', 'Pest', 'Playwright', 'Git', 'Composer'] },
+  { group: 'AI', items: ['LLM apps', 'RAG / retrieval', 'Claude'] },
+];
+---
+<BaseLayout hideNav={false}>
+  <div class="home container">
+    <header class="hero">
+      <Mascot />
+      <p class="eyebrow">Open to interesting problems</p>
+      <h1 class="hero-name">Lukman Nakib</h1>
+      <p class="hero-tag">I build WordPress products at scale.</p>
+      <p class="hero-desc">
+        WordPress product engineer &amp; technical lead. I build and scale
+        <a href="/work">Fluent Forms</a> — a form builder on <strong>700K+ active sites</strong>
+        — and other products at WPManageNinja. I care about the parts that keep working
+        after hundreds of thousands of sites depend on them.
+      </p>
+      <div class="hero-cta">
+        <a href="/work" class="btn-outline">View recent work</a>
+        <a href="/writing" class="btn-text">Read the writing →</a>
+      </div>
+      <p class="now"><span class="now-dot"></span> <span class="now-k">Now</span> — building <a href="/work/fluent-player">FluentPlayer</a> &amp; writing about engineering at scale.</p>
+    </header>
+
+    <section class="block">
+      <div class="sec-head"><h2 class="sec-title">Technologies &amp; tools</h2></div>
+      <dl class="stack">
+        {stack.map((s) => (
+          <div class="stack-row">
+            <dt>{s.group}</dt>
+            <dd>{s.items.map((it, i) => (<>{i > 0 && <span class="sep">·</span>}<span class="tech">{it}</span></>))}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+
+    <section class="block">
+      <div class="sec-head"><h2 class="sec-title">Writing</h2><a href="/writing" class="sec-more">all →</a></div>
+      <ul class="index">
+        {writing.map((p) => (
+          <li>
+            <a href={`/writing/${p.id}`} class="row-link">
+              <span class="leader">
+                <span class="leader-title">{p.data.title}</span>
+                <span class="leader-fill"></span>
+                <span class="leader-year">{yr(p.data.date)}</span>
+              </span>
+              <p class="row-desc">{p.data.description}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="block">
+      <div class="sec-head"><h2 class="sec-title">Selected work</h2><a href="/work" class="sec-more">all →</a></div>
+      <ul class="index">
+        {work.map((w) => (
+          <li>
+            <a href={`/work/${w.id}`} class="row-link">
+              <span class="leader">
+                <span class="leader-title">{w.data.title}</span>
+                {w.data.impact && <span class="leader-impact">{w.data.impact}</span>}
+                <span class="leader-fill"></span>
+                <span class="leader-year">{yr(w.data.date)}</span>
+              </span>
+              <p class="row-desc">{w.data.problem}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    {projects.length > 0 && (
+      <section class="block">
+        <div class="sec-head"><h2 class="sec-title">Projects</h2><a href="/projects" class="sec-more">all →</a></div>
+        <ul class="index">
+          {projects.map((p) => (
+            <li>
+              <a href={`/projects/${p.id}`} class="row-link">
+                <span class="leader">
+                  <span class="leader-title">{p.data.title}</span>
+                  {p.data.url && <span class="leader-impact">{p.data.url.replace(/^https?:\/\//, '')}</span>}
+                  <span class="leader-fill"></span>
+                  <span class="leader-year">{yr(p.data.date)}</span>
+                </span>
+                <p class="row-desc">{p.data.description}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <section class="block sub"><Subscribe /></section>
+
+    <footer class="home-foot">
+      {social.map((s) => <a href={s.href}>{s.label}</a>)}
+    </footer>
+  </div>
+</BaseLayout>
+
+<style>
+  .home { padding-block: clamp(var(--sp-12), 9vh, 90px) var(--sp-16); }
+  .hero { margin-bottom: var(--sp-16); }
+  .eyebrow { font-family: var(--mono); font-size: 13px; color: var(--muted); text-decoration: none; display: inline-flex; align-items: center; gap: var(--sp-3); }
+  .eyebrow::before { content: ''; width: 34px; height: 2px; background: var(--accent); border-radius: 2px; }
+  .hero-name {
+    font-family: var(--display); font-weight: 800;
+    font-size: clamp(2.8rem, 1.8rem + 5vw, 5rem);
+    line-height: 1; letter-spacing: -0.03em;
+    color: var(--accent); margin-top: var(--sp-4);
+  }
+  .hero-tag {
+    font-family: var(--display); font-weight: 800;
+    font-size: clamp(2rem, 1.3rem + 3.4vw, 3.6rem);
+    line-height: 1.05; letter-spacing: -0.03em;
+    color: var(--ink); margin-top: var(--sp-1); max-width: 18ch;
+  }
+  .hero-desc { margin-top: var(--sp-6); font-size: 1.3rem; line-height: 1.55; max-width: 52ch; }
+  .hero-desc a { font-weight: 500; }
+  .hero-desc strong { font-weight: 600; color: var(--ink); }
+  .hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-4); margin-top: var(--sp-8); font-family: var(--display); }
+  .btn-outline { display: inline-flex; padding: 12px 22px; border: 1px solid var(--accent); border-radius: 6px; color: var(--accent-ink); font-weight: 600; font-size: 15px; transition: background 140ms var(--ease); }
+  .btn-outline:hover { background: color-mix(in oklch, var(--accent) 10%, transparent); }
+  .btn-text { color: var(--muted); font-weight: 500; font-size: 15px; border-bottom: 0; }
+  .btn-text:hover { color: var(--accent-ink); }
+  .now { margin-top: var(--sp-8); font-family: var(--mono); font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: var(--sp-2); flex-wrap: wrap; }
+  .now-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .now-k { color: var(--accent-ink); }
+  .now a { color: var(--ink); border-bottom-color: var(--line); }
+
+  .block { margin-top: var(--sp-16); }
+  .sub { margin-top: var(--sp-24); }
+
+  .stack { display: grid; gap: 0; }
+  .stack-row { display: grid; grid-template-columns: 12rem 1fr; gap: var(--sp-4); align-items: baseline; padding: var(--sp-4) 0; border-bottom: 1px solid var(--line); }
+  .stack-row:first-child { border-top: 1px solid var(--line); }
+  .stack dt { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .stack dd { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; }
+  .stack .tech { font-size: 17px; color: var(--ink); }
+  .stack .sep { color: var(--faint); }
+  @media (max-width: 34rem) { .stack-row { grid-template-columns: 1fr; gap: 6px; } }
+  .home-foot { margin-top: var(--sp-16); padding-top: var(--sp-6); border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: var(--sp-6); font-family: var(--mono); font-size: 13px; }
+  .home-foot a { color: var(--muted); border-bottom: 0; }
+  .home-foot a:hover { color: var(--accent-ink); }
+</style>

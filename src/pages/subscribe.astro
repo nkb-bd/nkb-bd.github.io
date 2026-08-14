@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Subscribe from '../components/Subscribe.astro';
+---
+<BaseLayout
+  title="Subscribe — Lukman Nakib"
+  description="Get occasional notes on WordPress architecture and plugin engineering at scale."
+>
+  <section class="container page">
+    <h1>Subscribe</h1>
+    <div class="prose">
+      <p>
+        I send occasional writing on WordPress architecture, plugin engineering,
+        and the trade-offs behind products used at scale. One list, no noise, and
+        you can leave any time.
+      </p>
+    </div>
+    <div class="page-form"><Subscribe /></div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page { padding-block: var(--sp-16); display: grid; gap: var(--sp-8); justify-items: start; }
+  .page-form { width: 100%; margin-top: var(--sp-4); }
+</style>

@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const items = (await getCollection('notes', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+const fmt = (d: Date) => d.toLocaleDateString('en-CA');
+---
+<BaseLayout
+  title="Notes — Lukman Nakib"
+  description="Short notes: bugs, patterns, and small ideas worth remembering."
+>
+  <section class="container page">
+    <header class="page-head">
+      <h1>Notes</h1>
+      <p class="lede">Short-form — a bug worth remembering, a pattern, a small idea. Published often.</p>
+    </header>
+    {items.length === 0 ? (
+      <p class="empty">First notes are on the way.</p>
+    ) : (
+      <ul class="index">
+        {items.map((n) => (
+          <li>
+            <a href={`/notes/${n.id}`} class="row-link">
+              <span class="leader">
+                <span class="leader-title">{n.data.title}</span>
+                <span class="leader-fill"></span>
+                <span class="leader-year">{fmt(n.data.date)}</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </section>
+</BaseLayout>
+
+<style>
+  .page { padding-block: var(--sp-16); }
+  .page-head { margin-bottom: var(--sp-12); }
+  .lede { margin-top: var(--sp-3); font-size: 1.2rem; line-height: 1.5; color: var(--muted); max-width: 56ch; }
+  .empty { color: var(--muted); }
+</style>

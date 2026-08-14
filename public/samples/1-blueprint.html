@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sample 1 — Blueprint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Schibsted+Grotesk:wght@400;500;600&display=swap">
+<style>
+:root{--bg:oklch(.28 .055 255);--surface:oklch(.32 .055 255);--border:oklch(.56 .06 250);--dim:oklch(.42 .05 253);--grid:oklch(.62 .06 250);--ink:oklch(.95 .02 235);--muted:oklch(.78 .035 240);--accent:oklch(.8 .14 66);--cyan:oklch(.82 .09 220);--on:oklch(.24 .04 255);--mono:'JetBrains Mono',monospace;--sans:'Schibsted Grotesk',sans-serif}
+*{box-sizing:border-box;margin:0}
+body{background-color:var(--bg);background-image:linear-gradient(color-mix(in oklch,var(--grid)12%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in oklch,var(--grid)12%,transparent) 1px,transparent 1px);background-size:30px 30px;color:var(--ink);font-family:var(--mono);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.reg{position:fixed;width:13px;height:13px;border:1px solid color-mix(in oklch,var(--accent)50%,transparent);pointer-events:none}.tl{top:12px;left:12px;border-right:0;border-bottom:0}.tr{top:12px;right:12px;border-left:0;border-bottom:0}.bl{bottom:12px;left:12px;border-right:0;border-top:0}.br{bottom:12px;right:12px;border-left:0;border-top:0}
+.wrap{width:min(94vw,72rem);margin:0 auto;padding:48px 0 64px;display:grid;gap:64px}
+@media(min-width:60rem){.wrap{grid-template-columns:21rem 1fr;align-items:start}}
+.cart{border:1px solid var(--border);border-radius:8px;background:color-mix(in oklch,var(--surface)55%,transparent);padding:24px}
+.lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.name{font-weight:700;font-size:clamp(2rem,1.4rem+2.4vw,2.9rem);line-height:1.05;letter-spacing:-.02em;margin:12px 0 16px}
+.tag{font-family:var(--sans);color:var(--muted);padding-bottom:24px;border-bottom:1px solid var(--dim)}
+dl{display:grid;gap:12px;padding:24px 0;border-bottom:1px solid var(--dim)}.r{display:grid;gap:2px}dt{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent)}dd{color:var(--ink)}
+.nav{display:grid;gap:8px;padding-top:24px}.nav a{color:var(--ink);text-decoration:none}.nav a:hover{color:var(--accent)}.nav span{color:var(--border)}
+.fig{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.lede{font-family:var(--sans);font-size:clamp(1.15rem,1rem+.8vw,1.5rem);line-height:1.5;max-width:46ch;margin-bottom:16px}.lede b{color:var(--ink)}
+.cta{display:flex;gap:12px;margin:24px 0 48px;flex-wrap:wrap}.btn{font-family:var(--mono);font-weight:600;padding:12px 16px;border-radius:4px;text-decoration:none;border:1px solid var(--border);color:var(--ink)}.btn.p{background:var(--accent);color:var(--on);border-color:var(--accent)}.btn::before{content:'› ';color:var(--accent)}.btn.p::before{color:var(--on)}
+.sh{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--border);padding-bottom:12px;margin:0 0 32px;text-transform:uppercase;letter-spacing:.1em;font-weight:700}.sh .fr{color:var(--accent);margin-right:8px}.sh a{color:var(--muted);text-decoration:none;font-size:12px;letter-spacing:0;text-transform:none}
+ul{list-style:none;padding:0;margin:0;position:relative}ul::before{content:'';position:absolute;left:7px;top:12px;bottom:12px;width:1px;background:var(--dim)}
+li{position:relative;padding-left:32px}li+li{margin-top:16px}li::before{content:'';position:absolute;left:3px;top:26px;width:9px;height:9px;border:1px solid var(--accent);background:var(--bg);border-radius:2px}
+li a{display:block;padding:16px 24px;text-decoration:none;color:inherit;border:1px solid var(--dim);border-radius:6px;background:color-mix(in oklch,var(--surface)45%,transparent)}li a:hover{border-color:var(--accent)}
+.leader{display:flex;gap:12px;align-items:baseline;font-size:12px;color:var(--muted)}.slug{color:var(--cyan)}.f{flex:1;border-bottom:1px dotted var(--dim);transform:translateY(-.28em)}.y{color:var(--ink)}
+.t{font-family:var(--sans);font-size:1.1rem;font-weight:600;margin-top:12px}.d{font-family:var(--sans);color:var(--muted);margin-top:8px;max-width:60ch}
+</style></head><body>
+<div class="reg tl"></div><div class="reg tr"></div><div class="reg bl"></div><div class="reg br"></div>
+<div class="wrap">
+<aside class="cart">
+<p class="lbl">DWG. LN—2026</p>
+<div class="name">Lukman<br>Nakib</div>
+<p class="tag">I build and scale WordPress products used by hundreds of thousands of businesses.</p>
+<dl><div class="r"><dt>role</dt><dd>WordPress product engineer · tech lead</dd></div><div class="r"><dt>scale</dt><dd>700,000+ active installs</dd></div><div class="r"><dt>stack</dt><dd>php · vue · mysql · rest</dd></div><div class="r"><dt>based</dt><dd>Bangladesh</dd></div></dl>
+<nav class="nav"><a href="#"><span>+</span> work</a><a href="#"><span>+</span> projects</a><a href="#"><span>+</span> writing</a><a href="#"><span>+</span> about</a></nav>
+</aside>
+<div class="sheet">
+<section style="padding-bottom:48px">
+<p class="fig">FIG.00 — Overview</p>
+<p class="lede">For years I've worked on <b>Fluent Forms</b> and other products at WPManageNinja — form architecture, payments, integrations, and the parts that keep working after 700K+ sites depend on them.</p>
+<div class="cta"><a class="btn p" href="#">read the work</a><a class="btn" href="#">writing</a></div>
+</section>
+<section>
+<div class="sh"><span><span class="fr">FIG.01</span> Selected work</span><a href="#">all work →</a></div>
+<ul>
+<li><a href="#"><span class="leader"><span class="slug">work/fluent-forms-inventory</span><span class="f"></span><span class="y">2024</span></span><p class="t">Building an inventory system inside a WordPress form builder</p><p class="d">Forms that sell limited things need to stop accepting submissions once a quantity runs out — without a real database of products.</p></a></li>
+<li><a href="#"><span class="leader"><span class="slug">work/fluent-player</span><span class="f"></span><span class="y">2025</span></span><p class="t">FluentPlayer — turning a video player into an interactive system</p><p class="d">Make video interactive, measurable, and source-agnostic without turning into three plugins.</p></a></li>
+</ul>
+</section>
+</div>
+</div>
+</body></html>

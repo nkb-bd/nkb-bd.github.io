@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sample 3 — IDE / code editor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Schibsted+Grotesk:wght@400;500;600&display=swap">
+<style>
+:root{--bg:oklch(.19 .015 265);--panel:oklch(.16 .015 265);--bar:oklch(.23 .015 265);--border:oklch(.32 .02 265);--ink:oklch(.9 .01 265);--muted:oklch(.6 .015 265);--accent:oklch(.78 .13 55);--kw:oklch(.72 .12 330);--str:oklch(.78 .11 145);--num:oklch(.8 .1 80);--cy:oklch(.78 .09 220);--mono:'JetBrains Mono',monospace;--sans:'Schibsted Grotesk',sans-serif}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--mono);font-size:14px;line-height:1.7;height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+.titlebar{height:38px;background:var(--bar);display:flex;align-items:center;gap:8px;padding:0 14px;border-bottom:1px solid var(--border);flex:none}
+.dot{width:12px;height:12px;border-radius:50%}.d1{background:#e05a5a}.d2{background:#e0b24a}.d3{background:#4abf6a}
+.tt{margin-left:12px;color:var(--muted);font-size:12px}
+.body{flex:1;display:flex;min-height:0}
+.explorer{width:230px;background:var(--panel);border-right:1px solid var(--border);padding:14px 10px;flex:none;overflow:auto}
+.ehead{color:var(--muted);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:0 6px 10px}
+.tree a{display:block;color:var(--ink);text-decoration:none;padding:3px 6px;border-radius:4px;font-size:13px}.tree a:hover{background:var(--bar)}.tree a.active{background:var(--bar);color:var(--accent)}
+.folder{color:var(--muted);padding:8px 6px 3px;font-size:13px}.folder::before{content:'▾ '}
+.tree .file{padding-left:20px}.tree .file::before{content:'• ';color:var(--muted)}
+.main{flex:1;display:flex;flex-direction:column;min-width:0}
+.tabs{height:36px;background:var(--panel);display:flex;border-bottom:1px solid var(--border);flex:none}
+.tab{padding:0 16px;display:flex;align-items:center;font-size:12px;color:var(--muted);border-right:1px solid var(--border)}.tab.on{background:var(--bg);color:var(--ink);border-top:2px solid var(--accent)}
+.editor{flex:1;overflow:auto;padding:18px 0;display:flex}
+.gutter{color:var(--muted);text-align:right;padding:0 14px;user-select:none;opacity:.6}.gutter div{height:1.7em}
+.code{padding:0 20px;flex:1}
+.code .ln{white-space:pre;height:1.7em}
+.kw{color:var(--kw)}.str{color:var(--str)}.num{color:var(--num)}.cm{color:var(--muted)}.cy{color:var(--cy)}.ac{color:var(--accent)}
+.h{font-family:var(--sans);font-size:26px;font-weight:600;color:var(--ink)}
+.status{height:26px;background:var(--accent);color:oklch(.2 .02 265);display:flex;align-items:center;padding:0 14px;font-size:11px;gap:16px;flex:none}
+</style></head><body>
+<div class="titlebar"><span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span><span class="tt">lukman-nakib — README.md — VS/Portfolio</span></div>
+<div class="body">
+<aside class="explorer">
+<div class="ehead">Explorer</div>
+<div class="folder">lukman-nakib</div>
+<nav class="tree">
+<a href="#" class="active">📄 README.md</a>
+<div class="folder">work</div>
+<a href="#" class="file">fluent-forms-inventory.md</a>
+<a href="#" class="file">fluent-player.md</a>
+<a href="#" class="file">saas-integrations.md</a>
+<div class="folder">projects</div>
+<a href="#" class="file">jantechai.md</a>
+<div class="folder">writing</div>
+<a href="#" class="file">backward-compat.md</a>
+<a href="#" class="file">about.md</a>
+</nav>
+</aside>
+<div class="main">
+<div class="tabs"><div class="tab on">README.md</div><div class="tab">fluent-forms-inventory.md</div></div>
+<div class="editor">
+<div class="gutter"><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div></div>
+<div class="code">
+<div class="ln"><span class="cm"># Lukman Nakib</span></div>
+<div class="ln"> </div>
+<div class="ln"><span class="h">WordPress product engineer &amp; tech lead</span></div>
+<div class="ln"> </div>
+<div class="ln"><span class="kw">const</span> <span class="cy">lukman</span> = {</div>
+<div class="ln">  role:  <span class="str">"builds &amp; scales WordPress products"</span>,</div>
+<div class="ln">  scale: <span class="num">700_000</span>, <span class="cm">// active installs</span></div>
+<div class="ln">  stack: [<span class="str">"php"</span>, <span class="str">"vue"</span>, <span class="str">"mysql"</span>, <span class="str">"rest"</span>],</div>
+<div class="ln">  known: [<span class="str">"Fluent Forms"</span>, <span class="str">"FluentPlayer"</span>],</div>
+<div class="ln">}</div>
+<div class="ln"> </div>
+<div class="ln"><span class="cm">// &gt; I build systems that keep working at scale.</span></div>
+<div class="ln"><span class="ac">▸ ./read-the-work</span>   <span class="muted">▸ ./writing</span></div>
+<div class="ln"> </div>
+</div>
+</div>
+<div class="status"><span>⎇ main</span><span>● 4 case studies</span><span>markdown</span><span style="margin-left:auto">Ln 12, Col 1 · UTF-8</span></div>
+</div>
+</div>
+</body></html>

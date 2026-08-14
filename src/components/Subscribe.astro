@@ -1,0 +1,32 @@
+---
+const { compact = false } = Astro.props;
+---
+<section class:list={['subscribe', { compact }]}>
+  <div class="copy">
+    <p class="label">Newsletter</p>
+    <h2 class="title">Notes from building software at scale</h2>
+    <p class="sub">Occasional writing on WordPress architecture, plugin engineering, and the trade-offs behind products used by hundreds of thousands of sites. No noise.</p>
+  </div>
+  <form class="form" action="https://example.com/subscribe" method="post">
+    <label class="sr-only" for="sub-email">Email address</label>
+    <input id="sub-email" type="email" name="email" required placeholder="you@company.com" autocomplete="email" />
+    <button type="submit" class="cmd cmd-primary">Subscribe</button>
+  </form>
+</section>
+
+<style>
+  .subscribe { display: grid; gap: var(--sp-6); padding-top: var(--sp-8); border-top: 1px solid var(--line); }
+  .compact { padding-top: var(--sp-6); }
+  .title { font-size: 1.4rem; font-weight: 500; margin-top: var(--sp-2); }
+  .sub { color: var(--muted); max-width: 52ch; margin-top: var(--sp-2); font-size: 1.05rem; line-height: 1.5; }
+  .form { display: flex; flex-wrap: wrap; gap: var(--sp-3); }
+  .form input {
+    flex: 1 1 16rem; font-family: var(--mono); font-size: 14px;
+    padding: 10px 14px; border: 1px solid var(--line); border-radius: 6px;
+    background: var(--bg); color: var(--ink);
+  }
+  .form input::placeholder { color: var(--faint); }
+  .form input:focus-visible { border-color: var(--accent); outline-offset: 1px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  @media (min-width: 44rem) { .subscribe:not(.compact) { grid-template-columns: 1fr auto; align-items: end; } }
+</style>

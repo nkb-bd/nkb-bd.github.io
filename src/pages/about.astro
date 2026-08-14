@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Subscribe from '../components/Subscribe.astro';
+---
+<BaseLayout
+  title="About — Lukman Nakib"
+  description="Lukman Nakib is a WordPress product engineer and technical lead from Bangladesh, working on Fluent Forms and other WPManageNinja products."
+>
+  <article class="container about">
+    <header class="about-head"><h1>About</h1></header>
+    <figure class="about-photo">
+      <img src="/images/lukman-sea.jpg" alt="Lukman Nakib looking out over the sea at dusk" width="1280" height="720" loading="lazy" />
+      <figcaption>Lukman Nakib · engineer, builder, technical lead · Bangladesh</figcaption>
+    </figure>
+    <div class="prose">
+      <p>I'm a software engineer and technical lead from Bangladesh, focused on WordPress products and product engineering. Most of my work lives inside plugins that thousands of businesses run every day.</p>
+      <h2>The work</h2>
+      <p>For years I've worked on <strong>Fluent Forms</strong> and other products at WPManageNinja — a WordPress form builder used on 700K+ active sites. I've built and maintained large parts of it: form architecture, payments, conversational forms, quizzes, inventory and save-and-resume systems, validation across PHP / JavaScript / REST, and a long list of SaaS integrations. More recently, <strong>FluentPlayer</strong> — turning a video player into an interactive, measurable system.</p>
+      <p>Maintaining software at that scale teaches things a greenfield project never will — backward compatibility, migration safety, and how a small architectural shortcut turns expensive once hundreds of thousands of sites depend on it. That's most of what I write about here.</p>
+      <h2>Beyond the plugin</h2>
+      <p>I also build independent projects, like <a href="/projects/jantechai">JanteChai</a>, a Bengali AI answer engine — and experiment with developer tooling and AI-assisted development, and teach. The through-line is the same: designing systems that stay maintainable as they grow.</p>
+      <h2>Why this site</h2>
+      <p>Companies and products change. This is a single place to keep the knowledge, decisions, and case studies that make up my work — independent of any one employer — so the thinking is easy to evaluate on its own terms.</p>
+      <p>The fastest way to reach me is <a href="mailto:nakib.un@gmail.com">email</a>, or find me on <a href="https://github.com/nkb-bd" rel="me">GitHub</a> and <a href="https://www.linkedin.com/in/lukmannakib" rel="me">LinkedIn</a>.</p>
+    </div>
+    <div class="about-sub"><Subscribe compact={true} /></div>
+  </article>
+</BaseLayout>
+
+<style>
+  .about { padding-block: var(--sp-12) var(--sp-16); display: grid; justify-items: start; gap: var(--sp-8); }
+  .about-photo { width: 100%; max-width: var(--container); margin: 0; }
+  .about-photo img { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; }
+  .about-photo figcaption { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-top: var(--sp-3); }
+  .about-sub { width: var(--measure); margin-top: var(--sp-8); }
+</style>

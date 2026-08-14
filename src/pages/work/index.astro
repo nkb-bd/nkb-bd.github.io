@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const items = (await getCollection('work', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+const yr = (d: Date) => d.getFullYear();
+---
+<BaseLayout
+  title="Work — Lukman Nakib"
+  description="Case studies on WordPress product engineering: problem, constraints, architecture, trade-offs, and outcome."
+>
+  <section class="container page">
+    <header class="page-head">
+      <h1>Work</h1>
+      <p class="lede">Case studies written as engineering problems, not feature lists — problem, constraints, architecture, trade-offs, outcome, lessons.</p>
+    </header>
+    <ul class="index">
+      {items.map((w) => (
+        <li>
+          <a href={`/work/${w.id}`} class="row-link">
+            <span class="leader">
+              <span class="leader-title">{w.data.title}</span>
+              {w.data.impact && <span class="leader-impact">{w.data.impact}</span>}
+              <span class="leader-fill"></span>
+              <span class="leader-year">{yr(w.data.date)}</span>
+            </span>
+            <p class="row-desc">{w.data.problem}</p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+  .page { padding-block: var(--sp-16); }
+  .page-head { margin-bottom: var(--sp-12); }
+  .lede { margin-top: var(--sp-3); font-size: 1.2rem; line-height: 1.5; color: var(--muted); max-width: 56ch; }
+</style>

@@ -1,0 +1,115 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogType?: string;
+  ogImage?: string;
+  hideNav?: boolean;
+}
+
+const {
+  title = 'Lukman Nakib — WordPress Product Engineer',
+  description = 'Lukman Nakib is a WordPress product engineer and technical lead. Case studies, writing, and notes on building plugins used by hundreds of thousands of sites.',
+  ogType = 'website',
+  ogImage = '/images/og-default.png',
+  hideNav = false,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImageUrl = new URL(ogImage, Astro.site).href;
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Lukman Nakib',
+  jobTitle: 'WordPress Product Engineer & Technical Lead',
+  description:
+    'WordPress product engineer and technical lead working on Fluent Forms and other WPManageNinja products used by hundreds of thousands of sites.',
+  url: Astro.site?.href,
+  worksFor: { '@type': 'Organization', name: 'WPManageNinja' },
+  knowsAbout: [
+    'Fluent Forms',
+    'WordPress plugin development',
+    'WordPress form builders',
+    'PHP',
+    'Vue.js',
+    'WordPress REST API',
+    'Plugin architecture',
+    'SaaS integrations',
+    'Software architecture at scale',
+  ],
+  sameAs: [
+    'https://github.com/nkb-bd',
+    'https://www.linkedin.com/in/lukmannakib',
+    'https://x.com/lukmannakib',
+    'https://profiles.wordpress.org/nkbbd',
+  ],
+};
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:site_name" content="Lukman Nakib" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@lukmannakib" />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&family=Schibsted+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Lukman Nakib — Writing" href="/rss.xml" />
+
+    <script is:inline>
+      (() => {
+        try {
+          const t = localStorage.getItem('theme');
+          if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <script type="application/ld+json" set:html={JSON.stringify(person)} />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    {!hideNav && <Nav />}
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <style>
+      .skip-link {
+        position: absolute;
+        left: -9999px;
+        top: 0;
+        background: var(--accent);
+        color: var(--on-accent);
+        padding: var(--sp-2) var(--sp-4);
+        z-index: var(--z-toast);
+      }
+      .skip-link:focus { left: var(--sp-2); top: var(--sp-2); border-radius: 6px; }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,165 @@
+---
+---
+<div id="bird" class="bird" aria-hidden="true" title="a little visitor — click to shoo">
+  <svg class="bird-gfx" viewBox="0 0 44 34" width="34" height="26">
+    <!-- tail -->
+    <path class="bird-tail" d="M6 17 L0 11 L3 17 L0 23 Z" fill="var(--accent-ink)" />
+    <!-- legs -->
+    <g class="bird-legs" stroke="var(--ink)" stroke-width="1.4" stroke-linecap="round">
+      <line x1="18" y1="24" x2="17" y2="31" /><line x1="17" y1="31" x2="14" y2="32" /><line x1="17" y1="31" x2="20" y2="32" />
+      <line x1="24" y1="24" x2="25" y2="31" /><line x1="25" y1="31" x2="22" y2="32" /><line x1="25" y1="31" x2="28" y2="32" />
+    </g>
+    <!-- body -->
+    <ellipse cx="20" cy="16" rx="13" ry="9" fill="var(--accent)" />
+    <!-- head -->
+    <circle cx="32" cy="11" r="6" fill="var(--accent)" />
+    <!-- beak -->
+    <path d="M37 10 L44 12 L37 14 Z" fill="#e8944a" />
+    <!-- eye -->
+    <circle cx="33.5" cy="10" r="1.5" fill="var(--bg)" /><circle cx="33.9" cy="10" r="0.8" fill="var(--ink)" />
+    <!-- wing (flaps) -->
+    <path class="bird-wing" d="M17 13 C 10 6, 4 8, 6 15 C 10 18, 15 18, 20 15 Z" fill="var(--accent-ink)" />
+  </svg>
+</div>
+
+<style>
+  .bird {
+    position: fixed; top: 0; left: 0; z-index: 58;
+    line-height: 0; cursor: pointer;
+    transform: translate3d(var(--x, -60px), var(--y, 120px), 0) scaleX(var(--face, 1));
+    will-change: transform;
+  }
+  .bird-gfx { display: block; filter: drop-shadow(0 3px 4px color-mix(in oklch, var(--accent) 26%, transparent)); }
+  .bird-wing { transform-box: fill-box; transform-origin: 82% 60%; }
+
+  /* perched idle: slow wing settle + gentle head bob handled in JS; flap loop when flying */
+  .bird.flying .bird-wing { animation: flap 0.16s linear infinite; }
+  .bird.flying .bird-legs { opacity: 0; }
+  .bird:not(.flying) .bird-wing { transform: rotate(4deg); }
+  .bird.hop { animation: hop 0.28s ease; }
+
+  @keyframes flap {
+    0%, 100% { transform: rotate(-6deg) scaleY(1); }
+    50% { transform: rotate(-58deg) scaleY(0.7); }
+  }
+  @keyframes hop { 0%, 100% { translate: 0 0; } 40% { translate: 0 -7px; } }
+
+  @media (max-width: 64rem) { .bird { display: none; } }
+  @media (prefers-reduced-motion: reduce) { .bird { display: none; } }
+</style>
+
+<script is:inline>
+  (() => {
+    const bird = document.getElementById('bird');
+    if (!bird) return;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches || innerWidth < 1024) return;
+
+    const BW = 34, BH = 26;
+    const SEL = '.hero-name, .hero-tag, .brand, .nav-link, .btn-outline, .btn-text, .sec-title, .row-title, .lede strong';
+
+    let state = 'fly';        // 'perch' | 'walk' | 'fly'
+    let x = -60, y = 120, face = 1;
+    let perchEl = null, perchT = 0.5;
+    let fly = null;           // {sx,sy,ex,ey,el,t,dur,start}
+    let walkTo = 0, walkFrom = 0, walkStart = 0, walkDur = 0;
+    let nextAt = 0;
+
+    const now = () => performance.now();
+    const vis = (r) => r.width > 46 && r.top > 66 && r.bottom < innerHeight - 24 && r.right > 20 && r.left < innerWidth - 20;
+    const targets = () => [...document.querySelectorAll(SEL)].filter((el) => vis(el.getBoundingClientRect()));
+
+    const place = () => {
+      bird.style.setProperty('--x', x.toFixed(1) + 'px');
+      bird.style.setProperty('--y', y.toFixed(1) + 'px');
+      bird.style.setProperty('--face', face);
+    };
+
+    const perchXY = () => {
+      const r = perchEl.getBoundingClientRect();
+      return [r.left + perchT * r.width - BW / 2, r.top - BH + 3];
+    };
+
+    const startFly = (el) => {
+      const r = el.getBoundingClientRect();
+      const t = 0.2 + Math.random() * 0.6;
+      const ex = r.left + t * r.width - BW / 2, ey = r.top - BH + 3;
+      fly = { sx: x, sy: y, ex, ey, el, et: t, t: 0, dur: 620 + Math.hypot(ex - x, ey - y) * 1.1, start: now() };
+      face = ex >= x ? 1 : -1;
+      state = 'fly'; bird.classList.add('flying');
+    };
+
+    const pickTarget = (avoid) => {
+      const t = targets().filter((el) => el !== avoid);
+      if (!t.length) return null;
+      return t[Math.floor(Math.random() * t.length)];
+    };
+
+    const scheduleIdle = () => { nextAt = now() + 1600 + Math.random() * 3200; };
+
+    const loop = () => {
+      if (state === 'fly' && fly) {
+        const k = Math.min(1, (now() - fly.start) / fly.dur);
+        const e = 1 - Math.pow(1 - k, 3); // ease-out
+        x = fly.sx + (fly.ex - fly.sx) * e;
+        y = fly.sy + (fly.ey - fly.sy) * e - Math.sin(e * Math.PI) * 46; // arc
+        place();
+        if (k >= 1) {
+          perchEl = fly.el; perchT = fly.et; fly = null;
+          state = 'perch'; bird.classList.remove('flying');
+          const [px, py] = perchXY(); x = px; y = py; place();
+          scheduleIdle();
+        }
+        return;
+      }
+
+      if (state === 'walk') {
+        const k = Math.min(1, (now() - walkStart) / walkDur);
+        perchT = walkFrom + (walkTo - walkFrom) * k;
+        const [px, py] = perchXY(); x = px; y = py; place();
+        if (k >= 1) { state = 'perch'; scheduleIdle(); }
+        return;
+      }
+
+      // perch
+      if (!perchEl || !document.contains(perchEl) || !vis(perchEl.getBoundingClientRect())) {
+        const t = pickTarget(perchEl);
+        if (t) startFly(t);
+        else { x = -60; place(); nextAt = now() + 1200; }
+        return;
+      }
+      const [px, py] = perchXY(); x = px; y = py; place();
+
+      if (now() >= nextAt) {
+        const r = perchEl.getBoundingClientRect();
+        const canWalk = r.width > 120;
+        if (canWalk && Math.random() < 0.45) {
+          walkFrom = perchT;
+          walkTo = Math.max(0.12, Math.min(0.88, perchT + (Math.random() < 0.5 ? -1 : 1) * (0.18 + Math.random() * 0.3)));
+          face = walkTo >= walkFrom ? 1 : -1;
+          walkStart = now(); walkDur = 260 + Math.abs(walkTo - walkFrom) * r.width * 5;
+          state = 'walk';
+          bird.classList.remove('hop'); void bird.offsetWidth; bird.classList.add('hop');
+        } else {
+          const t = pickTarget(perchEl);
+          if (t) startFly(t); else scheduleIdle();
+        }
+      }
+    };
+
+    bird.addEventListener('click', () => {
+      const t = pickTarget(perchEl);
+      if (t) { startFly(t); if (fly) fly.dur *= 0.6; } // startled dash
+    });
+
+    // fly in from off-screen to a first target
+    const boot = () => {
+      const t = pickTarget(null);
+      if (t) startFly(t); else nextAt = now() + 800;
+    };
+
+    place();
+    setInterval(loop, 16);
+    setTimeout(boot, 400);
+    addEventListener('resize', () => { if (state === 'perch' && perchEl) { const [px, py] = perchXY(); x = px; y = py; place(); } });
+  })();
+</script>

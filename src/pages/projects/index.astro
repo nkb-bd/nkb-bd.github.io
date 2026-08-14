@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const items = (await getCollection('projects', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+const yr = (d: Date) => d.getFullYear();
+---
+<BaseLayout
+  title="Projects — Lukman Nakib"
+  description="Independent projects and experiments beyond WordPress product work — AI, developer tooling, and things built end to end."
+>
+  <section class="container page">
+    <header class="page-head">
+      <h1>Projects</h1>
+      <p class="lede">Independent builds and experiments — where I make every architectural call end to end, outside the day job.</p>
+    </header>
+    <ul class="index">
+      {items.map((p) => (
+        <li>
+          <a href={`/projects/${p.id}`} class="row-link">
+            <span class="leader">
+              <span class="leader-title">{p.data.title}</span>
+              {p.data.url && <span class="leader-impact">{p.data.url.replace(/^https?:\/\//, '')}</span>}
+              <span class="leader-fill"></span>
+              <span class="leader-year">{yr(p.data.date)}</span>
+            </span>
+            <p class="row-desc">{p.data.description}</p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+  .page { padding-block: var(--sp-16); }
+  .page-head { margin-bottom: var(--sp-12); }
+  .lede { margin-top: var(--sp-3); font-size: 1.2rem; line-height: 1.5; color: var(--muted); max-width: 56ch; }
+</style>
