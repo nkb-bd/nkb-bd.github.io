@@ -34,15 +34,24 @@ const isActive = (href: string) => path === href || path.startsWith(href + '/');
 </header>
 
 <style>
-  .nav { border-bottom: 1px solid var(--line); }
-  .nav-inner { display: flex; align-items: center; gap: var(--sp-4); height: 58px; }
-  .brand { font-family: var(--display); font-size: 1.05rem; font-weight: 700; color: var(--ink); border-bottom: 0; white-space: nowrap; letter-spacing: -0.01em; }
-  .brand .bk { color: var(--accent); }
+  .nav {
+    position: sticky; top: 0; z-index: var(--z-nav);
+    border-bottom: 1px solid color-mix(in oklch, var(--line) 80%, transparent);
+    background: color-mix(in oklch, var(--bg) 78%, transparent);
+    backdrop-filter: saturate(1.5) blur(12px);
+    -webkit-backdrop-filter: saturate(1.5) blur(12px);
+  }
+  .nav-inner { display: flex; align-items: center; gap: var(--sp-4); height: 60px; }
+  .brand { font-family: var(--display); font-size: 1.05rem; font-weight: 700; color: var(--ink); border-bottom: 0; white-space: nowrap; letter-spacing: -0.015em; }
+  .brand .bk { color: var(--accent); font-weight: 600; }
   .brand:hover { color: var(--accent-ink); }
   .resume { color: var(--accent-ink) !important; }
-  .nav-links { display: flex; gap: var(--sp-4); margin-left: auto; font-family: var(--mono); }
-  .nav-link { font-size: 13px; color: var(--muted); border-bottom: 0; }
+  .resume::after { display: none; }
+  .nav-links { display: flex; align-items: center; gap: 20px; margin-left: auto; font-family: var(--display); }
+  .nav-link { position: relative; font-size: 14px; font-weight: 500; color: var(--muted); border-bottom: 0; letter-spacing: -0.005em; padding-block: 6px; }
+  .nav-link::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; border-radius: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 180ms var(--ease); }
   .nav-link:hover { color: var(--ink); }
+  .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
   .nav-link.active { color: var(--accent-ink); }
   .theme-menu { position: relative; }
   .theme-btn { display: grid; place-items: center; width: 32px; height: 32px; border: 1px solid var(--line); border-radius: 8px; background: transparent; cursor: pointer; transition: border-color 140ms; }
