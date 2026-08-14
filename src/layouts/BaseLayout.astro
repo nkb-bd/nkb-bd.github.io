@@ -92,6 +92,11 @@ const person = {
         document.documentElement.setAttribute('data-theme', theme);
       })();
     </script>
+    <script is:inline>
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+        document.documentElement.classList.add('anim');
+      }
+    </script>
     <script type="application/ld+json" set:html={JSON.stringify(person)} />
   </head>
   <body>
@@ -101,6 +106,21 @@ const person = {
       <slot />
     </main>
     <Footer />
+    <script is:inline>
+      (() => {
+        const root = document.documentElement;
+        if (!root.classList.contains('anim')) return;
+        try {
+          const els = [...document.querySelectorAll('.hero, .block, .prose, .about-head, .about-photo, .about-sub, .xp-item')];
+          const io = new IntersectionObserver((entries) => {
+            entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+          }, { rootMargin: '0px 0px -6% 0px', threshold: 0.06 });
+          els.forEach((el) => io.observe(el));
+        } catch (e) {
+          root.classList.remove('anim');
+        }
+      })();
+    </script>
     <style>
       .skip-link {
         position: absolute;
