@@ -258,8 +258,14 @@
       const tDelTo = async (n, len) => { while (n.nodeValue.length > len) { n.nodeValue = n.nodeValue.slice(0, -1); typing(true); posOverlay(); await sleep(rnd(44, 66)); } typing(false); };
       const prefix = (a, b) => { let i = 0; while (i < a.length && i < b.length && a[i] === b[i]) i++; return i; };
 
-      const mGhost = async (bank) => { await gType(pick(bank)); await sleep(rnd(1200, 2100)); await gDel(); };
+      const ghostStyle = (mode) => {
+        if (!ghost) return;
+        if (mode === 'prose') { const cs = getComputedStyle(curEl); ghost.style.fontFamily = cs.fontFamily; ghost.style.color = cs.color; ghost.style.fontWeight = cs.fontWeight; ghost.style.opacity = '0.72'; }
+        else { ghost.style.fontFamily = 'var(--mono)'; ghost.style.color = 'var(--accent-ink)'; ghost.style.fontWeight = '500'; ghost.style.opacity = '0.56'; }
+      };
+      const mGhost = async (bank, mode) => { ghostStyle(mode); await gType(pick(bank)); await sleep(rnd(1200, 2100)); await gDel(); };
       const mTypo = async () => {
+        ghostStyle('code');
         const w = pick(TYPO), bad = w.slice(0, -1) + pick('xqzptk');
         await gType(bad); await sleep(rnd(320, 520));
         ghost.textContent = ghost.textContent.slice(0, -1); typing(true); await sleep(rnd(90, 130)); typing(false);
@@ -273,8 +279,8 @@
       const round = async (el) => {
         const rw = rewriteFor(el), r = Math.random();
         if (rw && r < 0.15) await mRewrite(el, rw);
-        else if (r < 0.5) await mGhost(CODE);
-        else if (r < 0.82) await mGhost(proseFor(el));
+        else if (r < 0.5) await mGhost(CODE, 'code');
+        else if (r < 0.82) await mGhost(proseFor(el), el.matches('.sec-title') ? 'code' : 'prose');
         else await mTypo();
       };
 
