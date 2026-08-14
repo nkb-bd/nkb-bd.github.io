@@ -83,10 +83,12 @@
     </svg>
   </div>
 
-  <!-- terminal caret -->
+  <!-- terminal caret with snitch wings -->
   <div class="skin skin-caret">
-    <svg viewBox="0 0 16 30" width="10" height="24">
-      <rect class="caret" x="3" y="2" width="9" height="26" rx="2.5" fill="var(--accent)" />
+    <svg viewBox="0 0 30 30" width="19" height="24">
+      <ellipse class="cwing cwl" cx="8" cy="8" rx="7" ry="3.4" fill="var(--accent)" />
+      <ellipse class="cwing cwr" cx="22" cy="8" rx="7" ry="3.4" fill="var(--accent)" />
+      <rect class="caret" x="12" y="2" width="6" height="26" rx="2.5" fill="var(--accent)" />
     </svg>
   </div>
 </div>
@@ -146,6 +148,13 @@
   .mascot[data-skin='caret'] { transition: opacity 160ms var(--ease); }
   .skin-caret .caret { transform-box: fill-box; transform-origin: 50% 50%; }
   .mascot.flying .skin-caret .caret { transform: scaleY(1.26) scaleX(0.74); }
+  .skin-caret .cwing { transform-box: fill-box; fill: color-mix(in oklch, var(--accent) 44%, white); opacity: 0.62; }
+  .skin-caret .cwl { transform-origin: right center; animation: cflapL 0.34s ease-in-out infinite alternate; }
+  .skin-caret .cwr { transform-origin: left center; animation: cflapR 0.34s ease-in-out infinite alternate; }
+  .mascot.flying .skin-caret .cwl { animation-duration: 0.12s; }
+  .mascot.flying .skin-caret .cwr { animation-duration: 0.12s; }
+  @keyframes cflapL { from { transform: rotate(-6deg) scaleX(1); } to { transform: rotate(-50deg) scaleX(0.5); } }
+  @keyframes cflapR { from { transform: rotate(6deg) scaleX(1); } to { transform: rotate(50deg) scaleX(0.5); } }
 
   .mascot.hop { animation: hop 0.28s ease; }
   @keyframes hop { 0%,100% { translate: 0 0; } 40% { translate: 0 -7px; } }
@@ -157,10 +166,18 @@
 <style is:global>
   .caret-edit { position: fixed; z-index: 57; pointer-events: none; white-space: pre; display: inline-flex; align-items: flex-end; font-family: var(--mono); font-size: 14px; will-change: left, top; }
   .caret-edit .cg { color: var(--accent-ink); opacity: 0.56; font-weight: 500; }
-  .caret-edit .cb { width: 2px; height: 18px; margin-left: 1px; background: var(--accent); border-radius: 1px; animation: caretblink 1.05s steps(1) infinite; }
-  .caret-edit.typing .cb { animation: none; }
+  .caret-edit .cb { position: relative; width: 2px; height: 18px; margin-left: 3px; background: var(--accent); border-radius: 1px; animation: caretblink 1.05s steps(1) infinite, caretHover 3s ease-in-out infinite; }
+  .caret-edit.typing .cb { animation: caretHover 3s ease-in-out infinite; }
+  .caret-edit .cb::before, .caret-edit .cb::after { content: ''; position: absolute; top: -1px; width: 5px; height: 8px; background: color-mix(in oklch, var(--accent) 42%, white); opacity: 0.4; border-radius: 70% 30% 62% 38% / 60% 42% 58% 40%; }
+  .caret-edit .cb::before { left: -5px; transform-origin: right 30%; animation: snitchL 0.22s ease-in-out infinite alternate; }
+  .caret-edit .cb::after { right: -5px; transform-origin: left 30%; animation: snitchR 0.22s ease-in-out infinite alternate; }
   @keyframes caretblink { 0%, 52% { opacity: 1; } 53%, 100% { opacity: 0.12; } }
-  @media (max-width: 64rem) { .caret-edit { display: none; } }
+  @keyframes caretHover { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1.6px); } }
+  @keyframes snitchL { from { transform: rotate(-8deg) scaleX(1); } to { transform: rotate(-34deg) scaleX(0.7); } }
+  @keyframes snitchR { from { transform: rotate(8deg) scaleX(1); } to { transform: rotate(34deg) scaleX(0.7); } }
+  .caret-trail { position: fixed; z-index: 56; pointer-events: none; width: 6px; height: 6px; border-radius: 50%; background: color-mix(in oklch, var(--accent) 52%, white); animation: caret-trail 0.52s ease-out forwards; }
+  @keyframes caret-trail { 0% { opacity: 0.5; transform: scale(1); } 100% { opacity: 0; transform: scale(0.25); } }
+  @media (max-width: 64rem) { .caret-edit, .caret-trail { display: none; } }
 </style>
 
 <script is:inline>
@@ -218,6 +235,8 @@
 
       let edit = null, ghost = null, bar = null, curEl = null, barH = 18, cx = -50, cy = 80;
       const place = () => { m.style.setProperty('--x', cx.toFixed(1) + 'px'); m.style.setProperty('--y', cy.toFixed(1) + 'px'); m.style.setProperty('--face', 1); };
+      let lastTrail = 0;
+      const trail = () => { if (performance.now() - lastTrail < 30) return; lastTrail = performance.now(); const t = document.createElement('span'); t.className = 'caret-trail'; t.style.left = (cx + 7) + 'px'; t.style.top = (cy + 9) + 'px'; document.body.appendChild(t); setTimeout(() => t.remove(), 520); };
       const posOverlay = () => { if (!edit || !curEl) return; const r = endRect(curEl); edit.style.left = r.left + 'px'; edit.style.top = (r.bottom - barH) + 'px'; };
       const attach = (el) => {
         curEl = el;
@@ -262,7 +281,7 @@
       const flyTo = async (r) => {
         m.classList.add('flying'); m.style.opacity = '1';
         const sx = cx, sy = cy, ex = r.left, ey = r.bottom - 20, dur = 920 + Math.hypot(ex - sx, ey - sy) * 1.7, t0 = performance.now();
-        await new Promise((res) => { const step = () => { const k = Math.min(1, (performance.now() - t0) / dur), e = 1 - Math.pow(1 - k, 3); cx = sx + (ex - sx) * e; cy = sy + (ey - sy) * e - Math.sin(e * Math.PI) * 42; place(); k < 1 ? requestAnimationFrame(step) : res(); }; requestAnimationFrame(step); });
+        await new Promise((res) => { const step = () => { const k = Math.min(1, (performance.now() - t0) / dur), e = 1 - Math.pow(1 - k, 3); cx = sx + (ex - sx) * e; cy = sy + (ey - sy) * e - Math.sin(e * Math.PI) * 42; place(); trail(); k < 1 ? requestAnimationFrame(step) : res(); }; requestAnimationFrame(step); });
         m.classList.remove('flying'); m.style.opacity = '0';
       };
       const pickNext = (cur) => {
