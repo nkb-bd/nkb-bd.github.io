@@ -181,10 +181,30 @@
       const pick = (a) => a[Math.floor(Math.random() * a.length)];
 
       const EDIT_SEL = '.hero-tag, .hero-desc, .row-desc, .sec-title, .lede';
-      const REWRITES = [{ sel: '.hero-tag', alts: ['I build WordPress products that last.', 'I build the parts that keep working.', 'I keep WordPress products shipping.'] }];
-      const CODE = [' // guard clause', ' () => {}', ' await ready()', ' return null', ' ?? fallback', ' === true', ' /* wip */', ' git push', ' npm run build', ' .filter(Boolean)'];
-      const PROSE = [' — and the migrations that outlived them.', ' — even the ugly edge cases.', ' — especially the parts nobody sees.', ', shipped and boring.', ' — trade-offs and all.'];
-      const TYPO = [' function', ' resolve()', ' promise', ' compiler', ' request', ' provider'];
+      const REWRITES = [{ sel: '.hero-tag', alts: ['I build WordPress products that last.', 'I build the parts that keep working.', 'I keep WordPress products shipping.', 'I build form tools for 700K sites.', 'I build software that survives updates.', 'I make WordPress products boringly reliable.'] }];
+      const CODE = [
+        ' // guard clause', ' () => {}', ' await ready()', ' return null', ' ?? fallback', ' === true', ' /* wip */',
+        ' .filter(Boolean)', ' Promise.all()', ' try { } catch {}', ' ?.length ?? 0', ' <template>', ' const [x] =',
+        ' add_filter()', " do_action('init')", ' register_rest_route()', ' $wpdb->prepare()', ' apply_filters()',
+        ' sanitize_text_field()', ' wp_enqueue_script()', ' ->validate()', ' ->transform()', ' migrate:up',
+        ' composer install', ' npm run build', ' git push --force-with-lease', ' pnpm dlx', ' pest --filter',
+      ];
+      const PROSE = [
+        ' — and the migrations that outlived them.', ' — even the ugly edge cases.', ' — especially the parts nobody sees.',
+        ', shipped and boring.', ' — trade-offs and all.', ' — the boring parts that keep working.',
+        ' — after the demo, when it has to hold.', ' — backward-compatible, on purpose.', ' — one deprecation at a time.',
+        ' — because someone always depends on it.', ' — tested where it actually hurts.', ' — documented for the next person.',
+      ];
+      const CTX = {
+        '.hero-tag': [' — 700K sites and counting.', " — the ones that don't break on update.", ' — form builders that scale.', ' — for the long haul.', ' — at WPManageNinja.'],
+        '.hero-desc': [' — hooks, filters, and all.', ' — and I write about why.', ' — the unglamorous 20%.', ' — so upgrades stay quiet.'],
+        '.sec-title': [' // index', ' .sort(byDate)', ' →', ' /* more soon */', ' .slice(0, 4)'],
+        '.row-desc': [' — worth the read.', ' // problem → architecture → outcome', ' — the short version.'],
+        '.lede': [' — start here.', ' — the reasoning, not the résumé.'],
+      };
+      const TYPO = [' function', ' resolve()', ' promise', ' compiler', ' request', ' provider', ' component', ' middleware', ' schema', ' iterator', ' throttle', ' debounce'];
+      const ctxFor = (el) => { for (const k in CTX) if (el.matches(k)) return CTX[k]; return []; };
+      const proseFor = (el) => { const c = ctxFor(el); if (el.matches('.sec-title')) return c.length ? c : CODE; return Math.random() < 0.5 && c.length ? c : PROSE.concat(c); };
 
       const inView = (el) => { const r = el.getBoundingClientRect(); return r.width > 60 && r.top > 72 && r.bottom < innerHeight - 20; };
       const targets = () => [...document.querySelectorAll(EDIT_SEL)].filter(inView);
@@ -234,8 +254,8 @@
       const round = async (el) => {
         const rw = rewriteFor(el), r = Math.random();
         if (rw && r < 0.15) await mRewrite(el, rw);
-        else if (r < 0.55) await mGhost(CODE);
-        else if (r < 0.8) await mGhost(PROSE);
+        else if (r < 0.5) await mGhost(CODE);
+        else if (r < 0.82) await mGhost(proseFor(el));
         else await mTypo();
       };
 
