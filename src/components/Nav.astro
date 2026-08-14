@@ -20,9 +20,16 @@ const isActive = (href: string) => path === href || path.startsWith(href + '/');
       ))}
       <a class="nav-link resume" href="https://www.linkedin.com/in/lukmannakib" target="_blank" rel="noopener">résumé</a>
     </nav>
-    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">
-      <span class="theme-icon" aria-hidden="true"></span>
-    </button>
+    <div class="theme-menu">
+      <button id="theme-btn" class="theme-btn" type="button" aria-haspopup="menu" aria-expanded="false" aria-label="Choose theme">
+        <span class="sw sw-current" aria-hidden="true"></span>
+      </button>
+      <div id="theme-pop" class="theme-pop" role="menu" aria-label="Theme" hidden>
+        <button class="theme-opt" type="button" role="menuitemradio" data-theme-val="light"><span class="sw sw-light" aria-hidden="true"></span>Light</button>
+        <button class="theme-opt" type="button" role="menuitemradio" data-theme-val="dark"><span class="sw sw-dark" aria-hidden="true"></span>Dark</button>
+        <button class="theme-opt" type="button" role="menuitemradio" data-theme-val="space"><span class="sw sw-space" aria-hidden="true"></span>Space</button>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -37,21 +44,53 @@ const isActive = (href: string) => path === href || path.startsWith(href + '/');
   .nav-link { font-size: 13px; color: var(--muted); border-bottom: 0; }
   .nav-link:hover { color: var(--ink); }
   .nav-link.active { color: var(--accent-ink); }
-  .theme-toggle {
-    display: grid; place-items: center; width: 32px; height: 32px;
-    border: 1px solid var(--line); border-radius: 6px; background: transparent; cursor: pointer;
+  .theme-menu { position: relative; }
+  .theme-btn { display: grid; place-items: center; width: 32px; height: 32px; border: 1px solid var(--line); border-radius: 8px; background: transparent; cursor: pointer; transition: border-color 140ms; }
+  .theme-btn:hover { border-color: var(--accent); }
+  .sw { width: 14px; height: 14px; border-radius: 50%; border: 1px solid color-mix(in oklch, var(--ink) 24%, transparent); display: inline-block; flex: none; }
+  .sw-light { background: oklch(0.97 0.006 85); }
+  .sw-dark { background: oklch(0.24 0.02 262); }
+  .sw-space { background: radial-gradient(circle at 32% 30%, oklch(0.82 0.14 250), oklch(0.26 0.08 264) 78%); border-color: transparent; }
+  .theme-pop {
+    position: absolute; right: 0; top: calc(100% + 8px); display: flex; flex-direction: column; gap: 2px;
+    padding: 6px; min-width: 150px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    box-shadow: 0 14px 34px -14px color-mix(in oklch, black 55%, transparent); z-index: var(--z-nav);
   }
-  .theme-toggle:hover { border-color: var(--accent); }
-  .theme-icon { width: 13px; height: 13px; border-radius: 50%; background: var(--ink); box-shadow: inset -4px -4px 0 0 var(--bg); }
-  :root[data-theme='dark'] .theme-icon { box-shadow: none; background: var(--accent); }
+  .theme-pop[hidden] { display: none; }
+  .theme-opt {
+    display: flex; align-items: center; gap: 10px; width: 100%; padding: 8px 10px; border: 0; border-radius: 8px;
+    background: transparent; color: var(--ink); font-family: var(--mono); font-size: 13px; cursor: pointer; text-align: left;
+    transition: background 120ms, color 120ms;
+  }
+  .theme-opt:hover { background: color-mix(in oklch, var(--accent) 12%, transparent); }
+  .theme-opt[aria-checked='true'] { color: var(--accent-ink); background: color-mix(in oklch, var(--accent) 15%, transparent); }
+  .theme-opt[aria-checked='true'] .sw { box-shadow: 0 0 0 2px color-mix(in oklch, var(--accent) 45%, transparent); }
   @media (max-width: 34rem) { .nav-links { gap: var(--sp-3); } }
 </style>
 
 <script is:inline>
-  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+  (() => {
     const root = document.documentElement;
-    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    try { localStorage.setItem('theme', next); } catch (e) {}
-  });
+    const btn = document.getElementById('theme-btn');
+    const pop = document.getElementById('theme-pop');
+    if (!btn || !pop) return;
+    const swatch = btn.querySelector('.sw');
+    const opts = [...pop.querySelectorAll('.theme-opt')];
+    const cur = () => root.getAttribute('data-theme') || 'light';
+    const sync = () => {
+      const c = cur();
+      swatch.className = 'sw sw-' + c;
+      opts.forEach((o) => o.setAttribute('aria-checked', String(o.dataset.themeVal === c)));
+    };
+    const open = (v) => { pop.hidden = !v; btn.setAttribute('aria-expanded', String(v)); };
+    btn.addEventListener('click', (e) => { e.stopPropagation(); open(pop.hidden); });
+    opts.forEach((o) => o.addEventListener('click', () => {
+      root.setAttribute('data-theme', o.dataset.themeVal);
+      try { localStorage.setItem('theme', o.dataset.themeVal); } catch (e) {}
+      sync(); open(false);
+    }));
+    document.addEventListener('click', (e) => { if (!pop.hidden && !e.target.closest('.theme-menu')) open(false); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') open(false); });
+    sync();
+  })();
 </script>
