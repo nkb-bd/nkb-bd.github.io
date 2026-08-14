@@ -1,89 +1,7 @@
 ---
-// Content-aware mascot. Switch skin with ?mascot=bird|cat|abstract|caret
+// Live-editor caret: a winged cursor that parks at the end of real text and types.
 ---
-<div id="mascot" class="mascot" aria-hidden="true" title="a little visitor — click to shoo">
-  <!-- bird -->
-  <div class="skin skin-bird">
-    <svg viewBox="0 0 44 34" width="34" height="26">
-      <path class="wing2" d="M6 17 L0 11 L3 17 L0 23 Z" fill="var(--accent-ink)" />
-      <g class="legs" stroke="var(--ink)" stroke-width="1.4" stroke-linecap="round">
-        <line x1="18" y1="24" x2="17" y2="31" /><line x1="17" y1="31" x2="14" y2="32" /><line x1="17" y1="31" x2="20" y2="32" />
-        <line x1="24" y1="24" x2="25" y2="31" /><line x1="25" y1="31" x2="22" y2="32" /><line x1="25" y1="31" x2="28" y2="32" />
-      </g>
-      <ellipse cx="20" cy="16" rx="13" ry="9" fill="var(--accent)" />
-      <circle cx="32" cy="11" r="6" fill="var(--accent)" />
-      <path d="M37 10 L44 12 L37 14 Z" fill="#e8944a" />
-      <circle cx="33.5" cy="10" r="1.5" fill="var(--bg)" /><circle cx="33.9" cy="10" r="0.8" fill="var(--ink)" />
-      <path class="wing" d="M17 13 C 10 6, 4 8, 6 15 C 10 18, 15 18, 20 15 Z" fill="var(--accent-ink)" />
-    </svg>
-  </div>
-
-  <!-- pixel cat -->
-  <div class="skin skin-cat">
-    <svg viewBox="0 0 40 34" width="32" height="27" shape-rendering="crispEdges">
-      <g fill="var(--accent)">
-        <rect x="2" y="12" width="4" height="4" /><rect x="2" y="16" width="4" height="8" /><rect x="6" y="22" width="4" height="4" />
-        <rect x="8" y="14" width="20" height="14" />
-        <rect x="22" y="4" width="12" height="12" />
-        <rect x="21" y="0" width="4" height="5" /><rect x="30" y="0" width="4" height="5" />
-        <rect x="10" y="28" width="4" height="4" /><rect x="20" y="28" width="4" height="4" />
-      </g>
-      <rect x="22" y="2" width="2" height="2" fill="var(--accent-ink)" /><rect x="31" y="2" width="2" height="2" fill="var(--accent-ink)" />
-      <rect x="30" y="9" width="2" height="3" fill="var(--bg)" />
-      <rect x="34" y="10" width="3" height="2" fill="#e8944a" />
-      <g class="legs"><rect x="10" y="30" width="4" height="3" fill="var(--accent-ink)" /><rect x="20" y="30" width="4" height="3" fill="var(--accent-ink)" /></g>
-    </svg>
-  </div>
-
-  <!-- abstract blob -->
-  <div class="skin skin-abstract">
-    <svg viewBox="0 0 34 32" width="28" height="26">
-      <path class="blob" d="M17 3 C 27 3, 31 12, 31 19 C 31 26, 25 30, 17 30 C 9 30, 3 26, 3 19 C 3 12, 7 3, 17 3 Z" fill="var(--accent)" />
-      <circle cx="21" cy="15" r="4.5" fill="var(--bg)" /><circle cx="22.4" cy="16" r="2.2" fill="var(--ink)" />
-    </svg>
-  </div>
-
-  <!-- boxy robot (WALL·E-inspired, original) -->
-  <div class="skin skin-robot">
-    <svg viewBox="0 0 44 46" width="36" height="38">
-      <!-- treads -->
-      <rect class="tread" x="4" y="35" width="36" height="9" rx="4.5" fill="var(--accent-ink)" />
-      <circle class="wheel" cx="11" cy="39.5" r="1.8" fill="var(--bg)" /><circle class="wheel" cx="22" cy="39.5" r="1.8" fill="var(--bg)" /><circle class="wheel" cx="33" cy="39.5" r="1.8" fill="var(--bg)" />
-      <!-- arms -->
-      <rect x="3" y="20" width="4" height="13" rx="2" fill="var(--accent-ink)" /><rect x="37" y="20" width="4" height="13" rx="2" fill="var(--accent-ink)" />
-      <!-- body -->
-      <rect x="8" y="16" width="28" height="21" rx="3" fill="var(--accent)" />
-      <rect x="12" y="22" width="20" height="9" rx="2" fill="color-mix(in oklch, var(--accent) 62%, black)" />
-      <rect x="14" y="24" width="6" height="2" rx="1" fill="#e8944a" /><rect x="14" y="27" width="10" height="2" rx="1" fill="var(--bg)" opacity="0.6" />
-      <!-- neck -->
-      <rect x="18" y="11" width="8" height="7" fill="var(--accent-ink)" />
-      <!-- binocular head -->
-      <rect x="9" y="2" width="26" height="13" rx="6.5" fill="color-mix(in oklch, var(--accent) 55%, black)" />
-      <circle class="eye" cx="17" cy="8.5" r="5" fill="var(--bg)" /><circle class="pupil" cx="18" cy="8.5" r="2.4" fill="var(--ink)" />
-      <circle class="eye" cx="27" cy="8.5" r="5" fill="var(--bg)" /><circle class="pupil" cx="28" cy="8.5" r="2.4" fill="var(--ink)" />
-    </svg>
-  </div>
-
-  <!-- recon drone (quadcopter) -->
-  <div class="skin skin-drone">
-    <svg viewBox="0 0 48 40" width="40" height="33">
-      <g stroke="var(--accent-ink)" stroke-width="2.6" stroke-linecap="round">
-        <line x1="24" y1="20" x2="9" y2="10" /><line x1="24" y1="20" x2="39" y2="10" />
-        <line x1="24" y1="20" x2="9" y2="30" /><line x1="24" y1="20" x2="39" y2="30" />
-      </g>
-      <g fill="var(--accent)" opacity="0.8">
-        <ellipse class="rotor" cx="9" cy="9" rx="8" ry="2.2" /><ellipse class="rotor" cx="39" cy="9" rx="8" ry="2.2" />
-        <ellipse class="rotor" cx="9" cy="31" rx="8" ry="2.2" /><ellipse class="rotor" cx="39" cy="31" rx="8" ry="2.2" />
-      </g>
-      <g fill="var(--accent-ink)"><circle cx="9" cy="9" r="2" /><circle cx="39" cy="9" r="2" /><circle cx="9" cy="31" r="2" /><circle cx="39" cy="31" r="2" /></g>
-      <rect x="15" y="12" width="18" height="16" rx="5" fill="var(--accent)" />
-      <rect x="17.5" y="14.5" width="3.5" height="2" rx="1" fill="#e8944a" />
-      <circle cx="24" cy="21" r="5" fill="color-mix(in oklch, var(--accent) 52%, black)" />
-      <circle class="lens" cx="24" cy="21" r="2.6" fill="var(--bg)" /><circle cx="24.7" cy="21.4" r="1.2" fill="var(--ink)" />
-    </svg>
-  </div>
-
-  <!-- terminal caret with snitch wings -->
+<div id="mascot" class="mascot" aria-hidden="true">
   <div class="skin skin-caret">
     <svg viewBox="0 0 30 30" width="19" height="24">
       <ellipse class="cwing cwl" cx="8" cy="8" rx="7" ry="3.4" fill="var(--accent)" />
@@ -95,57 +13,14 @@
 
 <style>
   .mascot {
-    position: fixed; top: 0; left: 0; z-index: 58; line-height: 0; cursor: pointer;
-    transform: translate3d(var(--x, -60px), var(--y, 120px), 0) scaleX(var(--face, 1));
-    will-change: transform;
+    position: fixed; top: 0; left: 0; z-index: 58; line-height: 0;
+    transform: translate3d(var(--x, -60px), var(--y, 120px), 0);
+    will-change: transform; transition: opacity 160ms var(--ease);
   }
   .mascot svg { display: block; filter: drop-shadow(0 3px 4px color-mix(in oklch, var(--accent) 26%, transparent)); }
-  .skin { display: none; }
-  .mascot[data-skin='bird'] .skin-bird,
-  .mascot[data-skin='cat'] .skin-cat,
-  .mascot[data-skin='abstract'] .skin-abstract,
-  .mascot[data-skin='robot'] .skin-robot,
-  .mascot[data-skin='drone'] .skin-drone,
-  .mascot[data-skin='caret'] .skin-caret { display: block; }
+  .skin-caret { display: block; }
 
-  /* bird */
-  .skin-bird .wing { transform-box: fill-box; transform-origin: 82% 60%; }
-  .mascot.flying .skin-bird .wing { animation: flap 0.16s linear infinite; }
-  .mascot.flying .skin-bird .legs { opacity: 0; }
-  @keyframes flap { 0%,100% { transform: rotate(-6deg) scaleY(1); } 50% { transform: rotate(-58deg) scaleY(0.7); } }
-
-  /* cat — leans forward when flying (leaping) */
-  .mascot.flying .skin-cat { animation: leap 0.3s ease infinite alternate; }
-  .mascot.flying .skin-cat .legs { opacity: 0.4; }
-  @keyframes leap { to { transform: rotate(-8deg); } }
-
-  /* abstract — squash & stretch */
-  .skin-abstract .blob { transform-box: fill-box; transform-origin: 50% 100%; }
-  .mascot.flying .skin-abstract .blob { animation: jelly 0.4s ease infinite; }
-  @keyframes jelly { 0%,100% { transform: scale(1,1); } 50% { transform: scale(0.86,1.16); } }
-
-  /* robot — bobs, glances, blinks, tilts when moving */
-  .skin-robot .pupil { transform-box: fill-box; transform-origin: center; animation: glance 4.5s ease-in-out infinite; }
-  .skin-robot .eye { transform-box: fill-box; transform-origin: center; animation: rblink 5.4s ease-in-out infinite; }
-  .mascot:not(.flying) .skin-robot { animation: robotidle 3.4s ease-in-out infinite; }
-  .mascot.flying .skin-robot { animation: robottilt 0.34s ease infinite alternate; }
-  @keyframes glance { 0%, 38% { transform: translateX(0); } 48%, 66% { transform: translateX(-1.8px); } 82%, 100% { transform: translateX(0); } }
-  @keyframes rblink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(0.12); } }
-  @keyframes robotidle { 0%, 100% { translate: 0 0; rotate: 0deg; } 30% { translate: 0 -2px; rotate: 1.5deg; } 70% { translate: 0 -1px; rotate: -1.5deg; } }
-  @keyframes robottilt { to { transform: rotate(-8deg); } }
-
-  /* drone — spinning rotors, hover bob, tilt when moving */
-  .skin-drone .rotor { transform-box: fill-box; transform-origin: center; animation: dronespin 0.12s linear infinite; }
-  .skin-drone .lens { animation: lens 3s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
-  .mascot:not(.flying) .skin-drone { animation: dronehover 2.3s ease-in-out infinite; }
-  .mascot.flying .skin-drone { animation: dronetilt 0.42s ease infinite alternate; }
-  @keyframes dronespin { to { transform: rotate(360deg); } }
-  @keyframes dronehover { 0%, 100% { translate: 0 0; } 50% { translate: 0 -3px; } }
-  @keyframes dronetilt { to { transform: rotate(-10deg); } }
-  @keyframes lens { 0%, 60%, 100% { transform: scale(1); } 80% { transform: scale(0.6); } }
-
-  /* caret — floating cursor shown only while flying between text blocks */
-  .mascot[data-skin='caret'] { transition: opacity 160ms var(--ease); }
+  /* floating cursor shown only while flying between text blocks */
   .skin-caret .caret { transform-box: fill-box; transform-origin: 50% 50%; }
   .mascot.flying .skin-caret .caret { transform: scaleY(1.26) scaleX(0.74); }
   .skin-caret .cwing { transform-box: fill-box; fill: color-mix(in oklch, var(--accent) 44%, white); opacity: 0.62; }
@@ -156,15 +31,12 @@
   @keyframes cflapL { from { transform: rotate(-6deg) scaleX(1); } to { transform: rotate(-50deg) scaleX(0.5); } }
   @keyframes cflapR { from { transform: rotate(6deg) scaleX(1); } to { transform: rotate(50deg) scaleX(0.5); } }
 
-  .mascot.hop { animation: hop 0.28s ease; }
-  @keyframes hop { 0%,100% { translate: 0 0; } 40% { translate: 0 -7px; } }
-
   @media (max-width: 64rem) { .mascot { display: none; } }
   @media (prefers-reduced-motion: reduce) { .mascot { display: none; } }
 </style>
 
 <style is:global>
-  .caret-edit { position: fixed; z-index: 57; pointer-events: none; white-space: pre; display: inline-flex; align-items: flex-end; font-family: var(--mono); font-size: 14px; will-change: left, top; }
+  .caret-edit { position: fixed; z-index: 57; pointer-events: auto; cursor: pointer; white-space: pre; display: inline-flex; align-items: flex-end; font-family: var(--mono); font-size: 14px; will-change: left, top; }
   .caret-edit .cg { color: var(--accent-ink); opacity: 0.56; font-weight: 500; }
   .caret-edit .cb { position: relative; width: 2px; height: 18px; margin-left: 3px; background: var(--accent); border-radius: 1px; animation: caretblink 1.05s steps(1) infinite, caretHover 3s ease-in-out infinite; }
   .caret-edit.typing .cb { animation: caretHover 3s ease-in-out infinite; }
@@ -186,208 +58,136 @@
     if (!m) return;
     if (matchMedia('(prefers-reduced-motion: reduce)').matches || innerWidth < 1024) { m.style.display = 'none'; return; }
 
-    const params = new URLSearchParams(location.search);
-    const skin = ['bird', 'cat', 'abstract', 'caret', 'robot', 'drone'].includes(params.get('mascot')) ? params.get('mascot') : 'caret';
-    m.setAttribute('data-skin', skin);
-    const noFlip = skin === 'caret' || skin === 'drone';
+    const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+    const rnd = (a, b) => a + Math.random() * (b - a);
+    const pick = (a) => a[Math.floor(Math.random() * a.length)];
 
-    // caret behaves like a live editor cursor: parks at the end of real text and types
-    if (skin === 'caret') {
-      const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-      const rnd = (a, b) => a + Math.random() * (b - a);
-      const pick = (a) => a[Math.floor(Math.random() * a.length)];
-
-      const EDIT_SEL = '.hero-tag, .hero-desc, .row-desc, .sec-title, .lede';
-      const REWRITES = [{ sel: '.hero-tag', alts: ['I build WordPress products that last.', 'I build the parts that keep working.', 'I keep WordPress products shipping.', 'I build form tools for 700K sites.', 'I build software that survives updates.', 'I make WordPress products boringly reliable.'] }];
-      const CODE = [
-        ' // guard clause', ' () => {}', ' await ready()', ' return null', ' ?? fallback', ' === true', ' /* wip */',
-        ' .filter(Boolean)', ' Promise.all()', ' try { } catch {}', ' ?.length ?? 0', ' <template>', ' const [x] =',
-        ' add_filter()', " do_action('init')", ' register_rest_route()', ' $wpdb->prepare()', ' apply_filters()',
-        ' sanitize_text_field()', ' wp_enqueue_script()', ' ->validate()', ' ->transform()', ' migrate:up',
-        ' composer install', ' npm run build', ' git push --force-with-lease', ' pnpm dlx', ' pest --filter',
-      ];
-      const PROSE = [
-        ' — and the migrations that outlived them.', ' — even the ugly edge cases.', ' — especially the parts nobody sees.',
-        ', shipped and boring.', ' — trade-offs and all.', ' — the boring parts that keep working.',
-        ' — after the demo, when it has to hold.', ' — backward-compatible, on purpose.', ' — one deprecation at a time.',
-        ' — because someone always depends on it.', ' — tested where it actually hurts.', ' — documented for the next person.',
-      ];
-      const CTX = {
-        '.hero-tag': [' — 700K sites and counting.', " — the ones that don't break on update.", ' — form builders that scale.', ' — for the long haul.', ' — at WPManageNinja.'],
-        '.hero-desc': [' — hooks, filters, and all.', ' — and I write about why.', ' — the unglamorous 20%.', ' — so upgrades stay quiet.'],
-        '.sec-title': [' // index', ' .sort(byDate)', ' →', ' /* more soon */', ' .slice(0, 4)'],
-        '.row-desc': [' — worth the read.', ' // problem → architecture → outcome', ' — the short version.'],
-        '.lede': [' — start here.', ' — the reasoning, not the résumé.'],
-      };
-      const TYPO = [' function', ' resolve()', ' promise', ' compiler', ' request', ' provider', ' component', ' middleware', ' schema', ' iterator', ' throttle', ' debounce'];
-      const ctxFor = (el) => { for (const k in CTX) if (el.matches(k)) return CTX[k]; return []; };
-      const proseFor = (el) => { const c = ctxFor(el); if (el.matches('.sec-title')) return c.length ? c : CODE; return Math.random() < 0.5 && c.length ? c : PROSE.concat(c); };
-
-      const inView = (el) => { const r = el.getBoundingClientRect(); return r.width > 60 && r.top > 72 && r.bottom < innerHeight - 20; };
-      const targets = () => [...document.querySelectorAll(EDIT_SEL)].filter(inView);
-      const rewriteFor = (el) => REWRITES.find((e) => el.matches(e.sel) && el.firstChild && el.firstChild.nodeType === 3);
-      const endRect = (el) => {
-        const mk = document.createElement('span'); mk.textContent = '​'; mk.style.cssText = 'font:inherit';
-        el.appendChild(mk); const r = mk.getBoundingClientRect(); mk.remove();
-        if (r.width || r.height || r.left) return { left: r.left, bottom: r.bottom };
-        const g = el.getBoundingClientRect(); return { left: g.right, bottom: g.bottom };
-      };
-
-      let edit = null, ghost = null, bar = null, curEl = null, barH = 18, cx = -50, cy = 80;
-      const place = () => { m.style.setProperty('--x', cx.toFixed(1) + 'px'); m.style.setProperty('--y', cy.toFixed(1) + 'px'); m.style.setProperty('--face', 1); };
-      let lastTrail = 0;
-      const trail = () => { if (performance.now() - lastTrail < 30) return; lastTrail = performance.now(); const t = document.createElement('span'); t.className = 'caret-trail'; t.style.left = (cx + 7) + 'px'; t.style.top = (cy + 9) + 'px'; document.body.appendChild(t); setTimeout(() => t.remove(), 520); };
-      const posOverlay = () => { if (!edit || !curEl) return; const r = endRect(curEl); edit.style.left = r.left + 'px'; edit.style.top = (r.bottom - barH) + 'px'; };
-      const attach = (el) => {
-        curEl = el;
-        edit = document.createElement('div'); edit.className = 'caret-edit'; edit.setAttribute('aria-hidden', 'true');
-        ghost = document.createElement('span'); ghost.className = 'cg';
-        bar = document.createElement('span'); bar.className = 'cb';
-        const fs = parseFloat(getComputedStyle(el).fontSize) || 16;
-        barH = Math.max(16, Math.min(fs * 1.06, 34));
-        edit.style.fontSize = Math.min(fs, 30) + 'px';
-        bar.style.height = barH + 'px';
-        edit.append(ghost, bar); document.body.appendChild(edit); posOverlay();
-      };
-      const detach = () => { const r = bar.getBoundingClientRect(); edit.remove(); edit = ghost = bar = curEl = null; return r; };
-      const typing = (on) => edit && edit.classList.toggle('typing', on);
-
-      const gType = async (s) => { for (const ch of s) { ghost.textContent += ch; typing(true); await sleep(rnd(78, 148)); } typing(false); };
-      const gDel = async () => { while (ghost && ghost.textContent) { ghost.textContent = ghost.textContent.slice(0, -1); typing(true); await sleep(rnd(40, 62)); } typing(false); };
-      const tType = async (n, s) => { for (const ch of s) { n.nodeValue += ch; typing(true); posOverlay(); await sleep(rnd(82, 150)); } typing(false); };
-      const tDelTo = async (n, len) => { while (n.nodeValue.length > len) { n.nodeValue = n.nodeValue.slice(0, -1); typing(true); posOverlay(); await sleep(rnd(44, 66)); } typing(false); };
-      const prefix = (a, b) => { let i = 0; while (i < a.length && i < b.length && a[i] === b[i]) i++; return i; };
-
-      const ghostStyle = (mode) => {
-        if (!ghost) return;
-        if (mode === 'prose') { const cs = getComputedStyle(curEl); ghost.style.fontFamily = cs.fontFamily; ghost.style.color = cs.color; ghost.style.fontWeight = cs.fontWeight; ghost.style.opacity = '0.72'; }
-        else { ghost.style.fontFamily = 'var(--mono)'; ghost.style.color = 'var(--accent-ink)'; ghost.style.fontWeight = '500'; ghost.style.opacity = '0.56'; }
-      };
-      const mGhost = async (bank, mode) => { ghostStyle(mode); await gType(pick(bank)); await sleep(rnd(1200, 2100)); await gDel(); };
-      const mTypo = async () => {
-        ghostStyle('code');
-        const w = pick(TYPO), bad = w.slice(0, -1) + pick('xqzptk');
-        await gType(bad); await sleep(rnd(320, 520));
-        ghost.textContent = ghost.textContent.slice(0, -1); typing(true); await sleep(rnd(90, 130)); typing(false);
-        await gType(w.slice(-1)); await sleep(rnd(1000, 1600)); await gDel();
-      };
-      const mRewrite = async (el, e) => {
-        const n = el.firstChild, orig = n.nodeValue, alt = pick(e.alts), p = prefix(orig, alt);
-        await tDelTo(n, p); await sleep(rnd(180, 320)); await tType(n, alt.slice(p)); await sleep(rnd(1700, 2500));
-        const p2 = prefix(alt, orig); await tDelTo(n, p2); await sleep(rnd(180, 300)); await tType(n, orig.slice(p2));
-      };
-      const round = async (el) => {
-        const rw = rewriteFor(el), r = Math.random();
-        if (rw && r < 0.15) await mRewrite(el, rw);
-        else if (r < 0.5) await mGhost(CODE, 'code');
-        else if (r < 0.82) await mGhost(proseFor(el), el.matches('.sec-title') ? 'code' : 'prose');
-        else await mTypo();
-      };
-
-      const flyTo = async (r) => {
-        m.classList.add('flying'); m.style.opacity = '1';
-        const sx = cx, sy = cy, ex = r.left, ey = r.bottom - 20, dur = 920 + Math.hypot(ex - sx, ey - sy) * 1.7, t0 = performance.now();
-        await new Promise((res) => { const step = () => { const k = Math.min(1, (performance.now() - t0) / dur), e = 1 - Math.pow(1 - k, 3); cx = sx + (ex - sx) * e; cy = sy + (ey - sy) * e - Math.sin(e * Math.PI) * 42; place(); trail(); k < 1 ? requestAnimationFrame(step) : res(); }; requestAnimationFrame(step); });
-        m.classList.remove('flying'); m.style.opacity = '0';
-      };
-      const pickNext = (cur) => {
-        const t = targets().filter((e) => e !== cur); if (!t.length) return null;
-        const mid = innerHeight / 2, w = t.map((e) => { const r = e.getBoundingClientRect(); return 1 / (1 + Math.abs((r.top + r.bottom) / 2 - mid) / 220); });
-        let s = w.reduce((a, b) => a + b, 0) * Math.random();
-        for (let i = 0; i < t.length; i++) { if ((s -= w[i]) <= 0) return t[i]; }
-        return t[t.length - 1];
-      };
-      const roamTo = async (next) => { const from = detach(); cx = from.left; cy = from.top; await flyTo(endRect(next)); attach(next); };
-
-      let ticking = false;
-      addEventListener('scroll', () => { if (ticking) return; ticking = true; requestAnimationFrame(() => { posOverlay(); ticking = false; }); }, { passive: true });
-      addEventListener('resize', posOverlay);
-
-      const boot = async () => {
-        m.style.opacity = '0'; m.style.pointerEvents = 'none';
-        let el = targets()[0] || document.querySelector('.hero-tag') || document.querySelector('.hero-desc');
-        if (!el) { m.style.display = 'none'; return; }
-        const er = endRect(el); cx = -50; cy = er.bottom - 20; place();
-        await flyTo(er); attach(el);
-        let rounds = 0;
-        for (;;) {
-          if (!document.contains(el) || !inView(el)) { const n = pickNext(el); if (n) { await roamTo(n); el = n; rounds = 0; continue; } }
-          try { await round(el); } catch (_) {}
-          rounds++; await sleep(rnd(1000, 1900));
-          if (rounds >= 2 + Math.floor(Math.random() * 3) && Math.random() < 0.7) { const n = pickNext(el); if (n && n !== el) { await roamTo(n); el = n; rounds = 0; } }
-        }
-      };
-      if (document.readyState === 'loading') addEventListener('DOMContentLoaded', boot, { once: true });
-      else boot();
-      return;
-    }
-
-    const BW = 32, BH = 26;
-    const SEL = '.hero-name, .hero-tag, .brand, .nav-link, .btn-outline, .btn-text, .sec-title, .row-title, .lede strong';
-
-    let state = 'fly', x = -60, y = 120, face = 1;
-    let perchEl = null, perchT = 0.5, fly = null;
-    let walkTo = 0, walkFrom = 0, walkStart = 0, walkDur = 0, nextAt = 0;
-
-    const now = () => performance.now();
-    const vis = (r) => r.width > 46 && r.top > 66 && r.bottom < innerHeight - 24 && r.right > 20 && r.left < innerWidth - 20;
-    const targets = () => [...document.querySelectorAll(SEL)].filter((el) => vis(el.getBoundingClientRect()));
-    const pick = (avoid) => { const t = targets().filter((el) => el !== avoid); return t.length ? t[Math.floor(Math.random() * t.length)] : null; };
-
-    const place = () => {
-      m.style.setProperty('--x', x.toFixed(1) + 'px');
-      m.style.setProperty('--y', y.toFixed(1) + 'px');
-      m.style.setProperty('--face', noFlip ? 1 : face);
+    const EDIT_SEL = '.hero-tag, .hero-desc, .row-desc, .sec-title, .lede';
+    const REWRITES = [{ sel: '.hero-tag', alts: ['I build WordPress products that last.', 'I build the parts that keep working.', 'I keep WordPress products shipping.', 'I build form tools for 700K sites.', 'I build software that survives updates.', 'I make WordPress products boringly reliable.'] }];
+    const CODE = [
+      ' // guard clause', ' () => {}', ' await ready()', ' return null', ' ?? fallback', ' === true', ' /* wip */',
+      ' .filter(Boolean)', ' Promise.all()', ' try { } catch {}', ' ?.length ?? 0', ' <template>', ' const [x] =',
+      ' add_filter()', " do_action('init')", ' register_rest_route()', ' $wpdb->prepare()', ' apply_filters()',
+      ' sanitize_text_field()', ' wp_enqueue_script()', ' ->validate()', ' ->transform()', ' migrate:up',
+      ' composer install', ' npm run build', ' git push --force-with-lease', ' pnpm dlx', ' pest --filter',
+    ];
+    const PROSE = [
+      ' — and the migrations that outlived them.', ' — even the ugly edge cases.', ' — especially the parts nobody sees.',
+      ', shipped and boring.', ' — trade-offs and all.', ' — the boring parts that keep working.',
+      ' — after the demo, when it has to hold.', ' — backward-compatible, on purpose.', ' — one deprecation at a time.',
+      ' — because someone always depends on it.', ' — tested where it actually hurts.', ' — documented for the next person.',
+    ];
+    const CTX = {
+      '.hero-tag': [' — 700K sites and counting.', " — the ones that don't break on update.", ' — form builders that scale.', ' — for the long haul.', ' — at WPManageNinja.'],
+      '.hero-desc': [' — hooks, filters, and all.', ' — and I write about why.', ' — the unglamorous 20%.', ' — so upgrades stay quiet.'],
+      '.sec-title': [' // index', ' .sort(byDate)', ' →', ' /* more soon */', ' .slice(0, 4)'],
+      '.row-desc': [' — worth the read.', ' // problem → architecture → outcome', ' — the short version.'],
+      '.lede': [' — start here.', ' — the reasoning, not the résumé.'],
     };
-    const perchXY = () => { const r = perchEl.getBoundingClientRect(); return [r.left + perchT * r.width - BW / 2, r.top - BH + 3]; };
-    const startFly = (el) => {
-      const r = el.getBoundingClientRect(), t = 0.2 + Math.random() * 0.6;
-      const ex = r.left + t * r.width - BW / 2, ey = r.top - BH + 3;
-      fly = { ex, ey, el, et: t, sx: x, sy: y, dur: 820 + Math.hypot(ex - x, ey - y) * 1.5, start: now() };
-      if (!noFlip) face = ex >= x ? 1 : -1;
-      state = 'fly'; m.classList.add('flying');
-    };
-    const idle = () => { nextAt = now() + 2200 + Math.random() * 3400; };
+    const TYPO = [' function', ' resolve()', ' promise', ' compiler', ' request', ' provider', ' component', ' middleware', ' schema', ' iterator', ' throttle', ' debounce'];
+    const ctxFor = (el) => { for (const k in CTX) if (el.matches(k)) return CTX[k]; return []; };
+    const proseFor = (el) => { const c = ctxFor(el); if (el.matches('.sec-title')) return c.length ? c : CODE; return Math.random() < 0.5 && c.length ? c : PROSE.concat(c); };
 
-    const loop = () => {
-      if (state === 'fly' && fly) {
-        const k = Math.min(1, (now() - fly.start) / fly.dur), e = 1 - Math.pow(1 - k, 3);
-        x = fly.sx + (fly.ex - fly.sx) * e;
-        y = fly.sy + (fly.ey - fly.sy) * e - Math.sin(e * Math.PI) * 46;
-        place();
-        if (k >= 1) {
-          perchEl = fly.el; perchT = fly.et; fly = null; state = 'perch'; m.classList.remove('flying');
-          const [px, py] = perchXY(); x = px; y = py; place(); idle();
-        }
-        return;
-      }
-      if (state === 'walk') {
-        const k = Math.min(1, (now() - walkStart) / walkDur);
-        perchT = walkFrom + (walkTo - walkFrom) * k;
-        const [px, py] = perchXY(); x = px; y = py; place();
-        if (k >= 1) { state = 'perch'; idle(); }
-        return;
-      }
-      if (!perchEl || !document.contains(perchEl) || !vis(perchEl.getBoundingClientRect())) {
-        const t = pick(perchEl); if (t) startFly(t); else { x = -60; place(); nextAt = now() + 1200; } return;
-      }
-      const [px, py] = perchXY(); x = px; y = py; place();
-      if (now() >= nextAt) {
-        const r = perchEl.getBoundingClientRect();
-        if (r.width > 120 && Math.random() < 0.68) {
-          walkFrom = perchT;
-          walkTo = Math.max(0.12, Math.min(0.88, perchT + (Math.random() < 0.5 ? -1 : 1) * (0.18 + Math.random() * 0.3)));
-          if (!noFlip) face = walkTo >= walkFrom ? 1 : -1;
-          walkStart = now(); walkDur = 420 + Math.abs(walkTo - walkFrom) * r.width * 8; state = 'walk';
-          m.classList.remove('hop'); void m.offsetWidth; m.classList.add('hop');
-        } else { const t = pick(perchEl); if (t) startFly(t); else idle(); }
-      }
+    const inView = (el) => { const r = el.getBoundingClientRect(); return r.width > 60 && r.top > 72 && r.bottom < innerHeight - 20; };
+    const targets = () => [...document.querySelectorAll(EDIT_SEL)].filter(inView);
+    const rewriteFor = (el) => REWRITES.find((e) => el.matches(e.sel) && el.firstChild && el.firstChild.nodeType === 3);
+    const endRect = (el) => {
+      const mk = document.createElement('span'); mk.textContent = '​'; mk.style.cssText = 'font:inherit';
+      el.appendChild(mk); const r = mk.getBoundingClientRect(); mk.remove();
+      if (r.width || r.height || r.left) return { left: r.left, bottom: r.bottom };
+      const g = el.getBoundingClientRect(); return { left: g.right, bottom: g.bottom };
     };
 
-    m.addEventListener('click', () => { const t = pick(perchEl); if (t) { startFly(t); if (fly) fly.dur *= 0.6; } });
-    place();
-    setInterval(loop, 16);
-    setTimeout(() => { const t = pick(null); if (t) startFly(t); else nextAt = now() + 800; }, 400);
-    addEventListener('resize', () => { if (state === 'perch' && perchEl) { const [px, py] = perchXY(); x = px; y = py; place(); } });
+    let edit = null, ghost = null, bar = null, curEl = null, barH = 18, cx = -50, cy = 80, gen = 0, active = 0;
+    const hold = async (ms) => { const end = performance.now() + ms; while (performance.now() < end) { if (gen !== active) return; await sleep(80); } };
+    const place = () => { m.style.setProperty('--x', cx.toFixed(1) + 'px'); m.style.setProperty('--y', cy.toFixed(1) + 'px'); };
+    let lastTrail = 0;
+    const trail = () => { if (performance.now() - lastTrail < 30) return; lastTrail = performance.now(); const t = document.createElement('span'); t.className = 'caret-trail'; t.style.left = (cx + 7) + 'px'; t.style.top = (cy + 9) + 'px'; document.body.appendChild(t); setTimeout(() => t.remove(), 520); };
+    const posOverlay = () => { if (!edit || !curEl) return; const r = endRect(curEl); edit.style.left = r.left + 'px'; edit.style.top = (r.bottom - barH) + 'px'; };
+    const attach = (el) => {
+      curEl = el;
+      edit = document.createElement('div'); edit.className = 'caret-edit'; edit.setAttribute('aria-hidden', 'true');
+      ghost = document.createElement('span'); ghost.className = 'cg';
+      bar = document.createElement('span'); bar.className = 'cb';
+      const fs = parseFloat(getComputedStyle(el).fontSize) || 16;
+      barH = Math.max(16, Math.min(fs * 1.06, 34));
+      edit.style.fontSize = Math.min(fs, 30) + 'px';
+      bar.style.height = barH + 'px';
+      edit.addEventListener('click', () => { gen++; });
+      edit.append(ghost, bar); document.body.appendChild(edit); posOverlay();
+    };
+    const detach = () => { const r = bar.getBoundingClientRect(); edit.remove(); edit = ghost = bar = curEl = null; return r; };
+    const typing = (on) => edit && edit.classList.toggle('typing', on);
+
+    const gType = async (s) => { for (const ch of s) { if (gen !== active) return; ghost.textContent += ch; typing(true); await sleep(rnd(78, 148)); } typing(false); };
+    const gDel = async () => { while (ghost && ghost.textContent) { if (gen !== active) return; ghost.textContent = ghost.textContent.slice(0, -1); typing(true); await sleep(rnd(40, 62)); } typing(false); };
+    const tType = async (n, s) => { for (const ch of s) { n.nodeValue += ch; typing(true); posOverlay(); await sleep(rnd(82, 150)); } typing(false); };
+    const tDelTo = async (n, len) => { while (n.nodeValue.length > len) { n.nodeValue = n.nodeValue.slice(0, -1); typing(true); posOverlay(); await sleep(rnd(44, 66)); } typing(false); };
+    const prefix = (a, b) => { let i = 0; while (i < a.length && i < b.length && a[i] === b[i]) i++; return i; };
+
+    const ghostStyle = (mode) => {
+      if (!ghost) return;
+      if (mode === 'prose') { const cs = getComputedStyle(curEl); ghost.style.fontFamily = cs.fontFamily; ghost.style.color = cs.color; ghost.style.fontWeight = cs.fontWeight; ghost.style.opacity = '0.72'; }
+      else { ghost.style.fontFamily = 'var(--mono)'; ghost.style.color = 'var(--accent-ink)'; ghost.style.fontWeight = '500'; ghost.style.opacity = '0.56'; }
+    };
+    const mGhost = async (bank, mode) => { ghostStyle(mode); await gType(pick(bank)); await hold(rnd(1200, 2100)); await gDel(); };
+    const mTypo = async () => {
+      ghostStyle('code');
+      const w = pick(TYPO), bad = w.slice(0, -1) + pick('xqzptk');
+      await gType(bad); await sleep(rnd(320, 520));
+      ghost.textContent = ghost.textContent.slice(0, -1); typing(true); await sleep(rnd(90, 130)); typing(false);
+      await gType(w.slice(-1)); await hold(rnd(1000, 1600)); await gDel();
+    };
+    const mRewrite = async (el, e) => {
+      const n = el.firstChild, orig = n.nodeValue, alt = pick(e.alts), p = prefix(orig, alt);
+      await tDelTo(n, p); await sleep(rnd(180, 320)); await tType(n, alt.slice(p)); await sleep(rnd(1700, 2500));
+      const p2 = prefix(alt, orig); await tDelTo(n, p2); await sleep(rnd(180, 300)); await tType(n, orig.slice(p2));
+    };
+    const round = async (el) => {
+      const rw = rewriteFor(el), r = Math.random();
+      if (rw && r < 0.15) await mRewrite(el, rw);
+      else if (r < 0.5) await mGhost(CODE, 'code');
+      else if (r < 0.82) await mGhost(proseFor(el), el.matches('.sec-title') ? 'code' : 'prose');
+      else await mTypo();
+    };
+
+    const flyTo = async (r) => {
+      m.classList.add('flying'); m.style.opacity = '1';
+      const sx = cx, sy = cy, ex = r.left, ey = r.bottom - 20, dur = 920 + Math.hypot(ex - sx, ey - sy) * 1.7, t0 = performance.now();
+      await new Promise((res) => { const step = () => { const k = Math.min(1, (performance.now() - t0) / dur), e = 1 - Math.pow(1 - k, 3); cx = sx + (ex - sx) * e; cy = sy + (ey - sy) * e - Math.sin(e * Math.PI) * 42; place(); trail(); k < 1 ? requestAnimationFrame(step) : res(); }; requestAnimationFrame(step); });
+      m.classList.remove('flying'); m.style.opacity = '0';
+    };
+    const pickNext = (cur) => {
+      const t = targets().filter((e) => e !== cur); if (!t.length) return null;
+      const mid = innerHeight / 2, w = t.map((e) => { const r = e.getBoundingClientRect(); return 1 / (1 + Math.abs((r.top + r.bottom) / 2 - mid) / 220); });
+      let s = w.reduce((a, b) => a + b, 0) * Math.random();
+      for (let i = 0; i < t.length; i++) { if ((s -= w[i]) <= 0) return t[i]; }
+      return t[t.length - 1];
+    };
+    const roamTo = async (next) => { const from = detach(); cx = from.left; cy = from.top; await flyTo(endRect(next)); attach(next); };
+
+    let ticking = false;
+    addEventListener('scroll', () => { if (ticking) return; ticking = true; requestAnimationFrame(() => { posOverlay(); ticking = false; }); }, { passive: true });
+    addEventListener('resize', posOverlay);
+
+    const boot = async () => {
+      m.style.opacity = '0'; m.style.pointerEvents = 'none';
+      let el = targets()[0] || document.querySelector('.hero-tag') || document.querySelector('.hero-desc');
+      if (!el) { m.style.display = 'none'; return; }
+      const er = endRect(el); cx = -50; cy = er.bottom - 20; place();
+      await flyTo(er); attach(el);
+      let rounds = 0;
+      for (;;) {
+        if (!document.contains(el) || !inView(el)) { const n = pickNext(el); if (n) { await roamTo(n); el = n; rounds = 0; continue; } }
+        active = gen;
+        try { await round(el); } catch (_) {}
+        rounds++;
+        await hold(rnd(1000, 1900));
+        if (gen !== active) { const n = pickNext(el) || el; await roamTo(n); el = n; rounds = 0; continue; }
+        if (rounds >= 2 + Math.floor(Math.random() * 3) && Math.random() < 0.7) { const n = pickNext(el); if (n && n !== el) { await roamTo(n); el = n; rounds = 0; } }
+      }
+    };
+    if (document.readyState === 'loading') addEventListener('DOMContentLoaded', boot, { once: true });
+    else boot();
   })();
 </script>
