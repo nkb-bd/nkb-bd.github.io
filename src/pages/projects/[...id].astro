@@ -21,5 +21,15 @@ const meta = item.data.url ? [item.data.url.replace(/^https?:\/\//, '')] : [];
   backHref="/projects"
   backLabel="Projects"
 >
+  {item.data.image && (
+    <figure class="project-hero">
+      <img src={item.data.image} alt={item.data.imageAlt ?? item.data.title} loading="lazy" />
+    </figure>
+  )}
   <Content />
 </ProseLayout>
+
+<style>
+  .project-hero { margin: 0 0 var(--sp-8); }
+  .project-hero img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; }
+</style>

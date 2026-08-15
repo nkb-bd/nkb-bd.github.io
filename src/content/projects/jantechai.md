@@ -2,6 +2,8 @@
 title: JanteChai — a Bengali AI answer engine, with sources
 description: An independent AI question-and-answer platform that answers in Bengali and cites where the answer came from. Built to make trustworthy AI answers accessible in a language most tools underserve.
 url: https://jantechai.bd
+image: /images/jantechai.png
+imageAlt: JanteChai's landing screen — a Bengali AI answer engine with a question box, prompting for a question to get an answer with its sources.
 date: 2025-05-01
 draft: false
 ---

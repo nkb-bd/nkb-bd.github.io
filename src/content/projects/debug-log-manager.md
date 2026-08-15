@@ -2,6 +2,8 @@
 title: Debug Log Manager — a published WordPress.org plugin
 description: A free plugin on the WordPress.org repository that lets developers toggle WP_DEBUG and related wp-config constants and read the debug log straight from the admin — no SSH or manual file edits.
 url: https://wordpress.org/plugins/debug-log-config-tool/
+image: /images/debug-log-manager.png
+imageAlt: The Debug Log Manager settings screen inside the WordPress admin, with toggles for WP_DEBUG, WP_DEBUG_LOG, SCRIPT_DEBUG, WP_DEBUG_DISPLAY and SAVEQUERIES.
 date: 2026-07-18
 draft: false
 ---
