@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sample 4 — Swiss editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&family=Archivo+Narrow:wght@500;700&display=swap">
+<style>
+:root{--bg:#f4f2ec;--ink:#141210;--muted:#6b6560;--line:#141210;--accent:#e0331d;--sans:'Archivo',sans-serif;--narrow:'Archivo Narrow',sans-serif}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{width:min(94vw,74rem);margin:0 auto;padding:28px 0 80px}
+.top{display:flex;justify-content:space-between;align-items:baseline;border-bottom:3px solid var(--line);padding-bottom:14px}
+.brand{font-weight:900;font-size:20px;letter-spacing:-.02em;text-transform:uppercase}
+.nav{display:flex;gap:20px;font-family:var(--narrow);font-weight:700;text-transform:uppercase;font-size:14px;letter-spacing:.04em}.nav a{color:var(--ink);text-decoration:none}.nav a:hover{color:var(--accent)}
+.hero{display:grid;grid-template-columns:1fr;gap:0;border-bottom:1px solid var(--line)}
+@media(min-width:56rem){.hero{grid-template-columns:1.5fr 1fr}}
+.h1{font-weight:900;font-size:clamp(3rem,1.5rem+7vw,6rem);line-height:.92;letter-spacing:-.04em;text-transform:uppercase;padding:36px 0 28px}
+.h1 .red{color:var(--accent)}
+.side{border-left:1px solid var(--line);padding:36px 0 28px 28px;font-size:17px;line-height:1.55}
+.side b{font-weight:700}
+.meta{font-family:var(--narrow);font-weight:700;text-transform:uppercase;font-size:13px;letter-spacing:.06em;color:var(--muted);margin-top:20px;display:grid;gap:4px}
+.cta{display:flex;gap:14px;margin-top:24px}.btn{font-family:var(--narrow);font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:12px 20px;text-decoration:none;border:2px solid var(--line);color:var(--ink)}.btn.p{background:var(--accent);border-color:var(--accent);color:#fff}
+.sec{margin-top:56px}
+.sh{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:3px solid var(--line);padding-bottom:10px}
+.sh h2{font-weight:900;font-size:clamp(1.6rem,1rem+2vw,2.4rem);text-transform:uppercase;letter-spacing:-.02em}
+.sh a{font-family:var(--narrow);font-weight:700;text-transform:uppercase;font-size:13px;color:var(--muted);text-decoration:none}
+.row{display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--line);text-decoration:none;color:inherit}
+.row:hover .rt{color:var(--accent)}
+.no{font-weight:900;font-size:28px;color:var(--accent);width:2.2ch}
+.rt{font-weight:700;font-size:clamp(1.2rem,.9rem+1.4vw,1.7rem);letter-spacing:-.01em}
+.rd{font-size:15px;color:var(--muted);margin-top:6px;max-width:60ch}
+.ry{font-family:var(--narrow);font-weight:700;color:var(--muted)}
+</style></head><body>
+<div class="wrap">
+<header class="top"><div class="brand">Lukman Nakib</div><nav class="nav"><a href="#">Work</a><a href="#">Projects</a><a href="#">Writing</a><a href="#">About</a></nav></header>
+<section class="hero">
+<h1 class="h1">Building <span class="red">WordPress</span> products at scale.</h1>
+<div class="side">
+<p>For years I've worked on <b>Fluent Forms</b> and other products at WPManageNinja — form architecture, payments, integrations, and the parts that keep working after 700K+ sites depend on them.</p>
+<div class="meta"><span>Role — WordPress product engineer</span><span>Scale — 700,000+ installs</span><span>Stack — php · vue · rest</span><span>Based — Bangladesh</span></div>
+<div class="cta"><a class="btn p" href="#">Read the work</a><a class="btn" href="#">Writing</a></div>
+</div>
+</section>
+<section class="sec">
+<div class="sh"><h2>Selected Work</h2><a href="#">All work →</a></div>
+<a class="row" href="#"><span class="no">01</span><span><span class="rt">Building an inventory system inside a form builder</span><div class="rd">Forms that sell limited things must stop accepting submissions once a quantity runs out — without a real database of products.</div></span><span class="ry">2024</span></a>
+<a class="row" href="#"><span class="no">02</span><span><span class="rt">FluentPlayer — an interactive video system</span><div class="rd">Make video interactive, measurable, and source-agnostic without turning into three plugins.</div></span><span class="ry">2025</span></a>
+<a class="row" href="#"><span class="no">03</span><span><span class="rt">What 30+ SaaS integrations taught me about API abstraction</span><div class="rd">One integration contract new providers implement, instead of the core learning each provider's quirks.</div></span><span class="ry">2024</span></a>
+</section>
+</div>
+</body></html>

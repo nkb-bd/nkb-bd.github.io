@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sample 6 — Minimalist (staff engineer)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#fbfaf7;--ink:#1b1a17;--muted:#78736b;--faint:#a8a29a;--line:#e7e3da;--accent:#bb4620;
+  --serif:'Newsreader',Georgia,serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+}
+@media(prefers-color-scheme:dark){:root{--bg:#14130f;--ink:#e9e6df;--muted:#9a948a;--faint:#6a655c;--line:#2a2823;--accent:#e0763f}}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:19px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.wrap{width:min(90vw,40rem);margin:0 auto;padding:96px 0 120px}
+header{margin-bottom:64px}
+.name{font-size:24px;font-weight:500;letter-spacing:-.01em}
+.intro{margin-top:20px;font-size:22px;line-height:1.55;color:var(--ink);max-width:34ch}
+.intro .m{color:var(--muted)}
+.intro a,.a{color:var(--accent);text-decoration:none;border-bottom:1px solid color-mix(in oklch,var(--accent) 35%,transparent)}
+.intro a:hover,.a:hover{border-bottom-color:var(--accent)}
+section{margin-top:56px}
+h2{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:18px}
+.row{display:flex;align-items:baseline;gap:14px;padding:11px 0;text-decoration:none;color:inherit;border-bottom:1px solid var(--line)}
+.row:first-of-type{border-top:1px solid var(--line)}
+.rt{font-size:19px;color:var(--ink)}
+.row:hover .rt{color:var(--accent)}
+.dots{flex:1;border-bottom:1px dotted var(--line);transform:translateY(-5px);min-width:24px}
+.ry{font-family:var(--mono);font-size:13px;color:var(--muted);white-space:nowrap}
+.imp{font-family:var(--mono);font-size:12px;color:var(--accent);white-space:nowrap}
+.foot{margin-top:72px;font-family:var(--mono);font-size:13px;color:var(--muted);display:flex;gap:20px;flex-wrap:wrap}
+.foot a{color:var(--muted);text-decoration:none}.foot a:hover{color:var(--accent)}
+</style></head><body>
+<div class="wrap">
+<header>
+<div class="name">Lukman Nakib</div>
+<p class="intro">WordPress product engineer &amp; technical lead. I build and scale <a href="#">Fluent Forms</a> and other products used by <span class="m">700K+ sites</span> at WPManageNinja. <span class="m">Less résumé, more reasoning.</span></p>
+</header>
+
+<section>
+<h2>Writing</h2>
+<a class="row" href="#"><span class="rt">What 700K installs taught me about backward compatibility</span><span class="dots"></span><span class="ry">2025</span></a>
+<a class="row" href="#"><span class="rt">Validation across PHP, JavaScript &amp; REST</span><span class="dots"></span><span class="ry">2024</span></a>
+</section>
+
+<section>
+<h2>Selected work</h2>
+<a class="row" href="#"><span class="rt">Fluent Forms — inventory system</span><span class="imp">700K+ installs</span><span class="dots"></span><span class="ry">2024</span></a>
+<a class="row" href="#"><span class="rt">FluentPlayer — interactive video system</span><span class="imp">WPManageNinja</span><span class="dots"></span><span class="ry">2025</span></a>
+<a class="row" href="#"><span class="rt">30+ SaaS integrations — one API contract</span><span class="dots"></span><span class="ry">2024</span></a>
+</section>
+
+<section>
+<h2>Projects</h2>
+<a class="row" href="#"><span class="rt">JanteChai — a Bengali AI answer engine</span><span class="imp">jantechai.bd</span><span class="dots"></span><span class="ry">2025</span></a>
+</section>
+
+<div class="foot"><a href="#">github</a><a href="#">x</a><a href="#">linkedin</a><a href="#">email</a><a href="#">subscribe</a></div>
+</div>
+</body></html>
