@@ -1,6 +1,5 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import Subscribe from '../components/Subscribe.astro';
 
 interface Props {
   title: string;
@@ -41,7 +40,6 @@ const article = {
       </p>
     </header>
     <div class="prose"><slot /></div>
-    <div class="article-sub"><Subscribe compact={true} /></div>
   </article>
   <script type="application/ld+json" set:html={JSON.stringify(article)} />
 </BaseLayout>

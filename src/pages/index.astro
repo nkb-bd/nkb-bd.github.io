@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Subscribe from '../components/Subscribe.astro';
 import Mascot from '../components/Mascot.astro';
 
 const byDate = (a, b) => b.data.date.valueOf() - a.data.date.valueOf();
@@ -17,10 +16,9 @@ const social = [
   { href: 'mailto:nakib.un@gmail.com', label: 'email' },
 ];
 
-// Edit to match your real toolkit.
 const stack = [
   { group: 'Languages', items: ['PHP', 'JavaScript', 'TypeScript', 'SQL'] },
-  { group: 'Backend', items: ['WordPress', 'WPFluent', 'REST APIs', 'MySQL'] },
+  { group: 'Backend', items: ['WordPress', 'WPFluent', 'Laravel', 'REST APIs', 'MySQL'] },
   { group: 'Frontend', items: ['Vue', 'Vite', 'Alpine', 'Tailwind'] },
   { group: 'Testing & tooling', items: ['PHPUnit', 'Pest', 'Playwright', 'Git', 'Composer'] },
   { group: 'AI', items: ['LLM apps', 'RAG / retrieval', 'Claude'] },
@@ -32,7 +30,7 @@ const stack = [
       <Mascot />
       <p class="eyebrow">Open to interesting problems</p>
       <h1 class="hero-name">Lukman Nakib</h1>
-      <p class="hero-tag">I build WordPress products at scale.</p>
+      <p class="hero-tag">I build and scale software products.</p>
       <p class="hero-desc">
         WordPress product engineer &amp; technical lead. I build and scale
         <a href="/work">Fluent Forms</a> — a form builder on <strong>700K+ active sites</strong>
@@ -115,8 +113,6 @@ const stack = [
         </ul>
       </section>
     )}
-
-    <section class="block sub"><Subscribe /></section>
 
     <footer class="home-foot">
       {social.map((s) => <a href={s.href}>{s.label}</a>)}
